@@ -116,7 +116,6 @@ async def process_negative_answer(message: Message):
             'пожалуйста, числа от 1 до 100')
 
 
-
 # Этот хэндлер будет срабатывать на отправку пользователем чисел от 1 до 100
 @dp.message(lambda x: x.text and x.text.isdigit() and 1 <= int(x.text) <= 100)
 async def process_numbers_answer(message: Message):
