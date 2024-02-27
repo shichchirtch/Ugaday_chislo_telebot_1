@@ -11,3 +11,16 @@ lower_tily_list = ['CAACAgIAAxkBAAEDsa1l2HYlXJxjAAFwAiR19vdgPtDX_OYAAnwOAAKoCC8I
                    'CAACAgIAAxkBAAEDscNl2Hn1Cwy5j0OIcBgYRlgw-O1uRgACjgEAAiUDUg95yNbGKW8ZejQE',
                    'CAACAgIAAxkBAAEDsc1l2HobGtH9KBXMagcYxvEhuOxp1gAChgEAAiUDUg-b63UIwRKxdDQE',
                    'CAACAgIAAxkBAAEDsc9l2Ho-Brt3q6PjQYRnDBMfMSJ8LQACbA4AAqgILwif4k8L_BlQOjQE']
+
+attempts_dict ={'a':1, 'b':2, 'c':3, 'd':4, 'e':5, 'f':6, 'g':7, 'h':8, 'i':9, 'j':10}
+
+att_choice = ('Введите пожалуйста количество попыток - \na = 1\n'
+                'b = 2\n'
+                             'c = 3\n'
+                             'd = 4\n'
+                             'e = 5\n'
+                             'f = 6\n'
+                             'g = 7\n'
+                             'h = 8\n'
+                             'i = 9\n'
+                             'j = 10\n')
