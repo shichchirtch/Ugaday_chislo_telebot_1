@@ -3,7 +3,7 @@ from aiogram import Bot, Dispatcher, F
 from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
 from Token import token_bot
-from lexicon import  upper_tily_list, lower_tily_list, attempts_dict, att_choice
+from lexicon import  upper_tily_list, lower_tily_list, positiv_answer, negative_answer
 import time
 
 BOT_TOKEN = token_bot
@@ -17,14 +17,10 @@ def verify_game_status(data:dict)->bool:
 def get_random_number() -> int:
     return random.randint(1, 100)
 
-def get_attempts_user(number:str)->int:
-    if number in ('abcdefgehij'):
-        return attempts_dict[number]
-    else:
-        return 5
 
 @dp.message(CommandStart())
 async def process_start_command(message: Message):
+    print(message.from_user.id)
     await message.answer(
         'Привет!\nДавайте сыграем в игру "Угадай число"?\n\n'
         'Согласны ? \n\n'
@@ -39,9 +35,11 @@ async def process_start_command(message: Message):
             'total_games': 0,
             'wins': 0,
             'total': 5,
-            'game_list':[]}
+            'game_list':[],
+            'set_attempts':'NotSet'}
 
-    # Этот хэндлер будет срабатывать на команду "/help"
+    await message.answer('Если хотите установить количество попыток введите число от 1 до 10\n'
+                         'По умолчанию у вас 5 попыток')
 @dp.message(Command(commands='help'))
 async def process_help_command(message: Message):
     if message.from_user.id in users.keys():
@@ -57,24 +55,26 @@ async def process_help_command(message: Message):
     else:
         await message.answer('Для начала работы с ботом введите /start')
 
-# Этот хэндлер будет срабатывать на команду "/stat"
-@dp.message(Command(commands='stat'))
-async def process_stat_command(message: Message):
-    if message.from_user.id in users.keys():
-        await message.answer(
-            f'Всего игр сыграно: {users[message.from_user.id]["total_games"]}\n'
-            f'Игр выиграно: {users[message.from_user.id]["wins"]}')
-        await message.answer('Сыграем ?')
-    else:
-        await message.answer('Пока что Вы не сыграли ни одной игры !')
 
-# Этот хэндлер будет срабатывать на команду "/cancel"
+@dp.message(Command(commands='att'))
+async def get_attempt_number(message: Message):
+    if message.from_user.id in users.keys():
+        if not users[message.from_user.id]['in_game']:
+            await message.answer('Установить количество попыток введите число от 1 до 10')
+            users[message.from_user.id]['set_attempts'] = 'NotSet'
+        else:
+            await message.answer(f'У вас {users[message.from_user.id]["attempts"]} попыток')
+    else:
+        await message.answer('Для начала работы с ботом введите /start')
+
+
 @dp.message(Command(commands='cancel'))
 async def process_cancel_command(message: Message):
     if message.from_user.id in users.keys():
         if users[message.from_user.id]['in_game']:
             users[message.from_user.id]['in_game'] = False
             users[message.from_user.id]['game_list'] = []
+            users[message.from_user.id]['set_attempts'] = "NotSet"
             await message.answer(
                 'Вы вышли из игры. Если захотите сыграть '
                 'снова - напишите об этом')
@@ -83,35 +83,33 @@ async def process_cancel_command(message: Message):
             await message.answer('А мы итак с вами не играем.\nМожет, сыграем разок?')
     else:
         await message.answer('Для начала работы с ботом введите /start')
-#  Этот хэндлер срабатывает тогда, когда пользователь уже согласился сыграть, просто уточняется количество попыток.
 
-@dp.message(Command(commands='att'))
-async def get_attempt_number(message: Message):
-    if message.from_user.id in users.keys():
-        if not users[message.from_user.id]['in_game']:
-            await message.answer(att_choice)
-        else:
-            await message.answer(f'У вас {users[message.from_user.id]["attempts"]} попыток')
-    else:
-        await message.answer('Для начала работы с ботом введите /start')
-
-@dp.message(F.text.lower().in_ ("abcdefghij"))
+@dp.message(lambda message: users[message.from_user.id]['set_attempts'] == 'NotSet')#text.lower().in_ ("abcdefghij"))
 async def user_attempt(message:Message):
     if not users[message.from_user.id]['in_game']:
-        users[message.from_user.id]['attempts'] = get_attempts_user(message.text)
-        users[message.from_user.id]['total'] = get_attempts_user(message.text)
-        await message.answer(f'Количество ваших попыток {users[message.from_user.id]["attempts"]}\nНачинаем игру ?')
+        if message.text.isdigit() and int(message.text)<11:
+            users[message.from_user.id]['attempts'] = int(message.text)
+            users[message.from_user.id]['total'] = int(message.text)
+            users[message.from_user.id]['set_attempts'] = "SET"
+
+            await message.answer(f'Количество ваших попыток {users[message.from_user.id]["attempts"]}\nНачинаем игру ?')
+        else:
+            users[message.from_user.id]['attempts'] = 5
+            users[message.from_user.id]['total'] = 5
+            users[message.from_user.id]['set_attempts'] = "SET"
+            await message.answer(f'Количество ваших попыток {5}\nНачинаем игру ?')
     else:
         await message.answer(f'Количество оставшихся попыток - {users[message.from_user.id]["attempts"]}')
 
 # Этот хэндлер будет срабатывать на согласие пользователя сыграть в игру
-@dp.message(F.text.lower().in_(['да', 'давай', 'сыграем', 'игра','yes', 'es','нуы',
-                                'играть', 'хочу играть', 'OK', 'ok','хочу','lfdfq',
-                                'хорошо', 'ну', 'ладно','lf','la','da','jr','[jxe']))
+
+@dp.message(F.text.lower().in_(positiv_answer))
+@dp.message(lambda message: users[message.from_user.id]['set_attempts'] == 'SET' and not message.text.isdigit)
 async def process_positive_answer(message: Message):
     if not users[message.from_user.id]['in_game'] :
         users[message.from_user.id]['in_game'] = True
         users[message.from_user.id]['secret_number'] = get_random_number()
+        users[message.from_user.id]['set_attempts'] = 'reSET'
         await message.answer(
                 'Ура!\n\nЯ загадал число от 1 до 100, '
                 f'попробуй угадать c {users[message.from_user.id]["attempts"]} попыток !')
@@ -123,16 +121,14 @@ async def process_positive_answer(message: Message):
             'и команды /cancel и /stat')
 
 # Этот хэндлер будет срабатывать на отказ пользователя сыграть в игру
-@dp.message(F.text.lower().in_(['нет', 'не', 'не хочу', 'не буду','no', 'net', 'yen','ytn']))
+@dp.message(F.text.lower().in_(negative_answer))
 async def process_negative_answer(message: Message):
     if not users[message.from_user.id]['in_game']:
         await message.answer(
             'Жаль :(\n\nЕсли захотите поиграть - просто напишите об этом')
         await message.answer_sticker('CAACAgMAAxkBAAEDsZVl2HTCLn_lM0nM94erqfXnriAPpQAC5wQAAr-MkARY4Gt1LYVUxTQE')
     else:
-        await message.answer(
-            'Мы же сейчас с вами играем. Присылайте, пожалуйста, числа от 1 до 100')
-
+        await message.answer('Мы же сейчас с вами играем. Присылайте, пожалуйста, числа от 1 до 100')
 
 # Этот хэндлер будет срабатывать на отправку пользователем чисел от 1 до 100
 @dp.message(lambda x: x.text and x.text.isdigit() and 1 <= int(x.text) <= 100)
@@ -189,6 +185,8 @@ async def process_numbers_answer(message: Message):
 # Этот хэндлер будет срабатывать на остальные любые сообщения
 @dp.message()
 async def process_other_answers(message: Message):
+    if not message.from_user.id in users:
+        await message.answer('Для начала работы с ботом введите /start')
     if users[message.from_user.id]['in_game']:
         await message.answer(
             'Мы же сейчас с вами играем. '
