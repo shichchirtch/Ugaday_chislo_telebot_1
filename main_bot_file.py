@@ -1,7 +1,7 @@
 import random
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import Command, CommandStart
-from aiogram.types import Message
+from aiogram.types import Message, ContentType
 from Token import token_bot
 from lexicon import  upper_tily_list, lower_tily_list, positiv_answer, negative_answer
 import time
@@ -20,9 +20,13 @@ def get_random_number() -> int:
 
 @dp.message(CommandStart())
 async def process_start_command(message: Message):
-    print(message.from_user.id)
+    print(message)
+    user_name = message.chat.first_name
+    print(user_name)
+    content_type = message.content_type
+    print(content_type)
     await message.answer(
-        'Привет!\nДавайте сыграем в игру "Угадай число"?\n\n'
+        f'Привет, {message.chat.first_name} !\nДавайте сыграем в игру "Угадай число"?\n\n'
         'Согласны ? \n\n'
         'Чтобы получить правила игры и список доступных '
         'команд - отправьте команду /help')
@@ -40,6 +44,15 @@ async def process_start_command(message: Message):
 
     await message.answer('Если хотите установить количество попыток введите число от 1 до 10\n'
                          'По умолчанию у вас 5 попыток')
+@dp.message(F.content_type != ContentType.TEXT)
+async def process_notTEXT_answers(message: Message):
+    if users[message.from_user.id]['in_game']:
+        await message.answer(
+            'Мы же сейчас с вами играем. '
+            'Присылайте, пожалуйста, числа от 1 до 100')
+    else:
+        await message.answer(
+            f'{message.chat.first_name} Вы хотите сыграть в игру ?')
 @dp.message(Command(commands='help'))
 async def process_help_command(message: Message):
     if message.from_user.id in users.keys():
@@ -141,7 +154,7 @@ async def process_numbers_answer(message: Message):
             users[message.from_user.id]['game_list'] = []
             users[message.from_user.id]['attempts'] = users[message.from_user.id]['total']
             await message.answer(
-                'Ура!!! Вы угадали число!\n\n'
+                f'Ура!!! {message.chat.first_name} Вы угадали число!\n\n'
                 'Может, сыграем еще?')
             await message.answer_sticker('CAACAgIAAxkBAAEDsZNl2HSDGiWepbBz9sB7qIBAXGRAEAACYQADr8ZRGq70R9934jY7NAQ')
 
@@ -171,7 +184,7 @@ async def process_numbers_answer(message: Message):
             users[message.from_user.id]['total_games'] += 1
             users[message.from_user.id]['game_list']= []
             await message.answer(
-                f'К сожалению, у вас больше не осталось '
+                f'К сожалению {message.chat.first_name}, у вас больше не осталось '
                 f'попыток. Вы проиграли :(\n\nМое число '
                 f'было {users[message.from_user.id]["secret_number"]}\n')
             time.sleep(1)
