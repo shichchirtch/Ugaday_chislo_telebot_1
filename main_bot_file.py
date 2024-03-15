@@ -1,32 +1,21 @@
 import random
 from aiogram import Bot, Dispatcher, F
-from aiogram.filters import Command, CommandStart, BaseFilter
+from aiogram.filters import Command, CommandStart
 from aiogram.types import Message, ContentType
 from Token import token_bot
 from lexicon import upper_tily_list, lower_tily_list, positiv_answer, negative_answer
 import time
-
+from UserFilter import BOT_WIN, SET_ATT, users
 BOT_TOKEN = token_bot
 # Создаем объекты бота и диспетчера
 bot = Bot(BOT_TOKEN)
 dp = Dispatcher()
-users = {}
-
 
 def verify_game_status(data: dict) -> bool:
     return users[data.from_user.id]['in_game']
 
-
 def get_random_number() -> int:
     return random.randint(1, 100)
-
-class SET_ATT(BaseFilter):
-    async def __call__(self, message: Message) -> bool:
-        return users[message.from_user.id]['set_attempts'] == 'NotSet'
-
-class BOT_WIN(BaseFilter):
-    async def __call__(self, message:Message):
-        return users[message.from_user.id]['bot_win']==True
 
 @dp.message(CommandStart())
 async def process_start_command(message: Message):
@@ -50,55 +39,53 @@ async def process_start_command(message: Message):
             'bot_list':[],
             'set_attempts': 'NotSet',
             'user_number': False,
-            'bot_Xodit': False,
             'bot_taily':'empty',
-            'difference': 0,
             'bot_win':False}
 
     await message.answer('Если хотите установить количество попыток введите число от 1 до 10\n'
                          'По умолчанию у вас 5 попыток')
 
 
-# @dp.message(F.content_type != ContentType.TEXT)
-# async def process_notTEXT_answers(message: Message):
-#     if users[message.from_user.id]['in_game']:
-#         await message.answer(
-#             'Мы же сейчас с вами играем. '
-#             'Присылайте, пожалуйста, числа от 1 до 100')
-#     else:
-#         await message.answer(
-#             f'{message.chat.first_name} Вы хотите сыграть в игру ?')
+@dp.message(F.content_type != ContentType.TEXT)
+async def process_notTEXT_answers(message: Message):
+    if users[message.from_user.id]['in_game']:
+        await message.answer(
+            'Мы же сейчас с вами играем. '
+            'Присылайте, пожалуйста, числа от 1 до 100')
+    else:
+        await message.answer(
+            f'{message.chat.first_name} Вы хотите сыграть в игру ?')
 
-# @dp.message(Command(commands='help'))
-# async def process_help_command(message: Message):
-#     if message.from_user.id in users.keys():
-#         await message.answer(
-#             f'Правила игры:\n\nЯ загадываю число от 1 до 100, '
-#             f'а вам нужно его угадать\nУ вас есть заданное Вами количество попыток '
-#             f'попыток\n\nДоступные команды:\n/help - правила '
-#             f'игры и список команд\n/cancel - выйти из игры\n'
-#             f'/stat - посмотреть статистику\n\nСо скольки попыток Вы угадаете число ?'
-#             f'\n(Не больше 10 ! по умолчанию 5)'
-#             f'\n/att - количество попыток с которых Вы хотите угадать число'
-#             f'\n\nНачинаем игру ?')
-#     else:
-#         await message.answer('Для начала работы с ботом введите /start')
-#
-# @dp.message(Command(commands='cancel'))
-# async def process_cancel_command(message: Message):
-#     if message.from_user.id in users.keys():
-#         if users[message.from_user.id]['in_game']:
-#             users[message.from_user.id]['in_game'] = False
-#             users[message.from_user.id]['game_list'] = []
-#             users[message.from_user.id]['set_attempts'] = "NotSet"
-#             await message.answer(
-#                 'Вы вышли из игры. Если захотите сыграть '
-#                 'снова - напишите об этом')
-#             await message.answer_sticker('CAACAgIAAxkBAAEDsZll2HU40blXBxl0fJfM1gxprSiB-AACZwADr8ZRGsmQice9AYoCNAQ')
-#         else:
-#             await message.answer('А мы итак с вами не играем.\nМожет, сыграем разок?')
-#     else:
-#         await message.answer('Для начала работы с ботом введите /start')
+@dp.message(Command(commands='help'))
+async def process_help_command(message: Message):
+    if message.from_user.id in users.keys():
+        await message.answer(
+            f'Правила игры:\n\nЯ загадываю число от 1 до 100, '
+            f'а вам нужно его угадать\nУ вас есть заданное Вами количество попыток '
+            f'попыток\n\nДоступные команды:\n/help - правила '
+            f'игры и список команд\n/cancel - выйти из игры\n'
+            f'/stat - посмотреть статистику\n\nСо скольки попыток Вы угадаете число ?'
+            f'\n(Не больше 10 ! по умолчанию 5)'
+            f'\n/att - количество попыток с которых Вы хотите угадать число'
+            f'\n\nНачинаем игру ?')
+    else:
+        await message.answer('Для начала работы с ботом введите /start')
+
+@dp.message(Command(commands='cancel'))
+async def process_cancel_command(message: Message):
+    if message.from_user.id in users.keys():
+        if users[message.from_user.id]['in_game']:
+            users[message.from_user.id]['in_game'] = False
+            users[message.from_user.id]['game_list'] = []
+            users[message.from_user.id]['set_attempts'] = "NotSet"
+            await message.answer(
+                'Вы вышли из игры. Если захотите сыграть '
+                'снова - напишите об этом')
+            await message.answer_sticker('CAACAgIAAxkBAAEDsZll2HU40blXBxl0fJfM1gxprSiB-AACZwADr8ZRGsmQice9AYoCNAQ')
+        else:
+            await message.answer('А мы итак с вами не играем.\nМожет, сыграем разок?')
+    else:
+        await message.answer('Для начала работы с ботом введите /start')
 
 @dp.message(Command(commands='att'))
 async def get_attempt_number(message: Message):
@@ -131,6 +118,7 @@ async def user_attempt(message: Message):
                                  f'загадайте число для меня, пожалуйста !')
     else:
         await message.answer(f'Количество оставшихся попыток - {users[message.from_user.id]["attempts"]}')
+
 @dp.message(BOT_WIN())
 async def bot_win(message:Message):
     users[message.from_user.id]['in_game'] = False
@@ -194,6 +182,60 @@ async def process_negative_answer(message: Message):
 @dp.message(lambda x: x.text and x.text.isdigit() and 1 <= int(x.text) <= 100)
 async def process_numbers_answer(message: Message):
     if users[message.from_user.id]['in_game']:
+        if users[message.from_user.id]['bot_taily'] > users[message.from_user.id]['user_number']:
+            if len(users[message.from_user.id]['bot_list'])==1:
+                # print('list=  ',users[message.from_user.id]['bot_list'])
+                users[message.from_user.id]['bot_taily']= users[message.from_user.id]['bot_taily']//2
+                users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['bot_taily'])
+                if users[message.from_user.id]['bot_list'][0] == users[message.from_user.id]['user_number']:
+                    users[message.from_user.id]['bot_win'] = True
+            else:
+                if users[message.from_user.id]['bot_list'][-1] < users[message.from_user.id]['bot_list'][-2]:
+                    # print('list1=  ', users[message.from_user.id]['bot_list'])
+                    users[message.from_user.id]['bot_taily'] =1+(users[message.from_user.id]['bot_taily'] -
+                                                               (users[message.from_user.id]['bot_list'][-2]-
+                                                                users[message.from_user.id]['bot_list'][-1])//2)
+                    if users[message.from_user.id]['bot_taily'] in users[message.from_user.id]['bot_list']:
+                        users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['bot_taily']-1)
+                    else:
+                        users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['bot_taily'])
+                    if users[message.from_user.id]['bot_taily'] == users[message.from_user.id]['user_number']:
+                        users[message.from_user.id]['bot_win'] = True
+                else:
+                    # print('list2=  ', users[message.from_user.id]['bot_list'])
+                    users[message.from_user.id]['bot_taily'] = (users[message.from_user.id]['bot_taily'] -
+                                                                (users[message.from_user.id]['bot_list'][-1] -
+                                                                 users[message.from_user.id]['bot_list'][-2]) // 2)
+                    users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['bot_taily'])
+
+                    if users[message.from_user.id]['bot_taily'] == users[message.from_user.id]['user_number']:
+                        users[message.from_user.id]['bot_win'] = True
+
+        else: # Если число меньше загаданного пользователем
+            if len(users[message.from_user.id]['bot_list'])==1:
+                # print('list3=  ', users[message.from_user.id]['bot_list'])
+                users[message.from_user.id]['bot_taily'] =1 + (100 - users[message.from_user.id]['bot_taily'])//2 + users[message.from_user.id]['bot_taily']
+                users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['bot_taily'])
+
+                if users[message.from_user.id]['bot_list'][0] == users[message.from_user.id]['user_number']:
+                    users[message.from_user.id]['bot_win'] = True
+            else: # число меньше загаданного пользователем
+                if users[message.from_user.id]['bot_list'][-1] < users[message.from_user.id]['bot_list'][-2]:
+                    # print('list4=  ', users[message.from_user.id]['bot_list'])
+                    users[message.from_user.id]['bot_taily'] = 1 + users[message.from_user.id]['bot_taily'] + ((users[message.from_user.id]['bot_list'][-2] - users[message.from_user.id]['bot_list'][-1])//2)
+                    if users[message.from_user.id]['bot_taily'] == users[message.from_user.id]['user_number']:
+                        users[message.from_user.id]['bot_win'] = True
+
+                    users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['bot_taily'])
+                else: # Здесь последнее число больше предпоследнего и меньше заганного
+                    users[message.from_user.id]['bot_taily'] = 1 + users[message.from_user.id]['bot_taily'] + (users[message.from_user.id]['bot_list'][-1]-users[message.from_user.id]['bot_list'][-2])//2
+                    if users[message.from_user.id]['bot_taily'] == users[message.from_user.id]['user_number']:
+                        users[message.from_user.id]['bot_win'] = True
+                    # print('list5=  ', users[message.from_user.id]['bot_list'])
+                    if users[message.from_user.id]['bot_taily']>100:
+                        users[message.from_user.id]['bot_taily']=100
+                    users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['bot_taily'])
+
         if int(message.text) == users[message.from_user.id]['secret_number']:
             users[message.from_user.id]['in_game'] = False
             users[message.from_user.id]['total_games'] += 1
@@ -215,27 +257,9 @@ async def process_numbers_answer(message: Message):
                 await message.answer('Мое число меньше')
                 random.shuffle(lower_tily_list)
                 await message.answer_sticker(random.choice(lower_tily_list))
-                if users[message.from_user.id]['bot_taily'] > users[message.from_user.id]['user_number']:
-                    await message.answer(f"Я нозову число {users[message.from_user.id]['bot_taily']}")
-                    users[message.from_user.id]['difference'] = users[message.from_user.id]['bot_list'][-1]//2
-                    users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['difference'])
-                    users[message.from_user.id]['bot_taily'] = users[message.from_user.id]['bot_taily'] - users[message.from_user.id]['difference']
-                    if users[message.from_user.id]['bot_taily']  == users[message.from_user.id]['user_number']:
-                        users[message.from_user.id]['bot_win']= True
-                    print('new bot taily = ', users[message.from_user.id]['bot_taily'])
-                else:
-                    await message.answer(f"Я нозову число {users[message.from_user.id]['bot_taily']}")
-                    users[message.from_user.id]['difference'] = users[message.from_user.id]['bot_list'][-1]//2
-                    users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['difference'])
-                    users[message.from_user.id]['bot_taily'] = users[message.from_user.id]['bot_taily'] + \
-                                                               users[message.from_user.id]['difference']
-                    if users[message.from_user.id]['bot_taily']  == users[message.from_user.id]['user_number']:
-                        users[message.from_user.id]['bot_win']= True
-
-                    print('if mehr new bot taily = ', users[message.from_user.id]['bot_taily'])
+                await message.answer(f"Я назову число {users[message.from_user.id]['bot_list'][-2]}")
             else:
                 await message.answer('Вы же знаете, что я не это число загадал)))')
-
 
 
         elif int(message.text) < users[message.from_user.id]['secret_number']:
@@ -244,22 +268,7 @@ async def process_numbers_answer(message: Message):
                 users[message.from_user.id]['game_list'].append(int(message.text))
                 await message.answer('Мое число больше')
                 await message.answer_sticker(random.choice(upper_tily_list))
-                if users[message.from_user.id]['bot_taily'] > users[message.from_user.id]['user_number']:
-                    await message.answer(f"Я нозову число {users[message.from_user.id]['bot_taily']}")
-                    users[message.from_user.id]['difference'] = users[message.from_user.id]['bot_list'][-1] // 2
-                    users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['difference'])
-                    users[message.from_user.id]['bot_taily'] = users[message.from_user.id]['bot_taily'] - \
-                                                               users[message.from_user.id]['difference']
-                    if users[message.from_user.id]['bot_taily']  == users[message.from_user.id]['user_number']:
-                        users[message.from_user.id]['bot_win']= True
-                else:
-                    await message.answer(f"Я нозову число {users[message.from_user.id]['bot_taily']}")
-                    users[message.from_user.id]['difference'] = users[message.from_user.id]['bot_list'][-1] // 2
-                    users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['difference'])
-                    users[message.from_user.id]['bot_taily'] = users[message.from_user.id]['bot_taily'] + \
-                                                               users[message.from_user.id]['difference']
-                    if users[message.from_user.id]['bot_taily']  == users[message.from_user.id]['user_number']:
-                        users[message.from_user.id]['bot_win']= True
+                await message.answer(f"Я нозову число {users[message.from_user.id]['bot_list'][-2]}")
             else:
                 await message.answer('Вы же знаете, что я не это число загадал)))')
 
@@ -268,7 +277,8 @@ async def process_numbers_answer(message: Message):
             users[message.from_user.id]['attempts'] = users[message.from_user.id]['total']
             users[message.from_user.id]['total_games'] += 1
             users[message.from_user.id]['game_list'] = []
-            users[message.from_user.id]['user_number'] = 'setting_data'
+            users[message.from_user.id]['user_number'] = False
+            users[message.from_user.id]['bot_list'] = []
             await message.answer(
                 f'К сожалению {message.chat.first_name}, у вас больше не осталось '
                 f'попыток. Вы проиграли :(\n\nМое число '
