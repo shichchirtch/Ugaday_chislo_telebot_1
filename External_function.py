@@ -1,8 +1,4 @@
 import random
-from UserFilter import users
-def verify_game_status(data: dict) -> bool:
-    return users[data.from_user.id]['in_game']
-
 
 def get_random_number() -> int:
     return random.randint(1, 100)
