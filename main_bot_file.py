@@ -40,10 +40,8 @@ async def process_start_command(message: Message):
             'bot_win': False,
             'bot_pobeda': 0,
             'language': 0,
-            'start_time':start_time,
-            'end_time':None}
+            'start_time':start_time}
     time.sleep(1)
-    print('***********', users[message.from_user.id]["user_name"])
     await message.answer('Если хотите установить количество попыток введите число от 1 до 10\n'
                          'По умолчанию у вас 5 попыток')
 
