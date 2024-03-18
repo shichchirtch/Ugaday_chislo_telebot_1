@@ -8,3 +8,7 @@ class SET_ATT(BaseFilter):
 class BOT_WIN(BaseFilter):
     async def __call__(self, message:Message):
         return users[message.from_user.id]['bot_win']==True
+
+class CHEMPION(BaseFilter):
+    async def __call__(self, message:Message):
+        return users[message.from_user.id]['chemp']['status']==True
