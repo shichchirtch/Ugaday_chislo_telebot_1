@@ -4,7 +4,7 @@ from aiogram.filters import Command, CommandStart
 from aiogram.types import Message, ContentType
 from Token import token_bot
 from lexicon import *
-from UserFilter import BOT_WIN, SET_ATT, CHEMPION
+from UserFilter import BOT_WIN, SET_ATT, CHEMPION, RESTART
 from External_function import verify_number, choosing_number, time_counter, reset_user_dict_after_finish
 from config import users, user_belongnes
 #  from pprint import pprint  #  Раскомментировать для вывода логов
@@ -15,7 +15,7 @@ bot = Bot(BOT_TOKEN)
 dp = Dispatcher()
 
 
-@dp.message(CommandStart())
+@dp.message(CommandStart(), RESTART())
 async def process_start_command(message: Message):
     # print(message) log
     # print(message.chat.first_name) log
@@ -389,8 +389,11 @@ async def process_other_answers(message: Message):
     if users[message.from_user.id]['in_game']:
         await message.answer(language_dict['wrong sent data'][users[message.from_user.id]['language']])
     else:
-        await message.answer(language_dict['silly bot'][users[message.from_user.id]['language']])
-        await message.answer_sticker(sticker_dict['silly bot'])
+        if message.text ==('/start'):
+            await message.answer(language_dict['restart'][users[message.from_user.id]['language']])
+        else:
+            await message.answer(language_dict['silly bot'][users[message.from_user.id]['language']])
+            await message.answer_sticker(sticker_dict['silly bot'])
 
 
 if __name__ == '__main__':

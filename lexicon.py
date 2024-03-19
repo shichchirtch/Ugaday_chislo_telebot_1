@@ -170,7 +170,10 @@ language_dict = {'if not start': ('Для начала работы с бото�
 
                  'wrong content type': (', Вы хотите сыграть в игру ?',
                       ', do you want to play a game?',
-                      'Willst du ein Spiel spielen?')
+                      'Willst du ein Spiel spielen?'),
+                 'restart': ('Нельзя запусть бота дважды !)))',
+                             'This is impossible to start BOT twice',
+                             'Das ist unmöch den BOT zu restart')
                  }
 
 upper_tily_list = ['CAACAgIAAxkBAAEDsZFl2HQvjYlDvPNaL9pcfqZR4Pp5wQACfQ4AAqgILwh8uDWrBIcPxDQE',

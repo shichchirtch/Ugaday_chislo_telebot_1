@@ -20,3 +20,10 @@ class CHEMPION(BaseFilter):
         if users[message.from_user.id]['chemp']['status']:
             return True
         return False
+
+class RESTART(BaseFilter):
+    async def __call__(self, message:Message):
+        if users:
+            if users[message.from_user.id]['start_time']:
+                return False
+        return True
