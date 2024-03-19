@@ -20,7 +20,7 @@ user_belongnes={
             'bot_win': False,
             'bot_pobeda': 0,
             'language': 0,
-            'start_time': time.monotonic(),
+            'start_time': None,
             'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False},
             'chemp_result': 0
         }

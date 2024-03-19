@@ -128,7 +128,7 @@ language_dict = {'if not start': ('Для начала работы с бото�
                       'You guessed my number ',
                       'Du hast meine Nummer erraten '),
 
-                 23: ('\n\nМожет, сыграем еще?', '\n\nMaybe we can play again?',
+                 'play new game after user wins': ('\n\nМожет, сыграем еще?', '\n\nMaybe we can play again?',
                       '\n\nVielleicht können wir wieder spielen?'),
 
                  'less': ('Мое число меньше', 'My number is less', 'Meine Zahl ist geringer'),

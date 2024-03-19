@@ -5,8 +5,9 @@ from aiogram.types import Message, ContentType
 from Token import token_bot
 from lexicon import *
 from UserFilter import BOT_WIN, SET_ATT, CHEMPION
-from External_function import verify_number, choosing_number, time_counter
-from config import user_belongnes, users
+from External_function import verify_number, choosing_number, time_counter, reset_user_dict_after_finish
+from config import users #, user_belongnes
+from pprint import pprint
 
 BOT_TOKEN = token_bot
 # Создаем объекты бота и диспетчера
@@ -19,16 +20,39 @@ async def process_start_command(message: Message):
     # print(message) log
     # print(message.chat.first_name) log
     user_name = message.chat.first_name
+    start_time = time.monotonic()
     await message.answer(
         f'Привет, {message.chat.first_name} !\n {start_greeding}')
     # Если пользователь только запустил бота и его нет в словаре 'users - добавляем его в словарь
 
     if message.from_user.id not in users:
-        users[message.from_user.id] = user_belongnes
-        users[message.from_user.id]['user_name'] = user_name
+        users[message.from_user.id] = {
+            'user_name': user_name,
+            'in_game': False,
+            'secret_number': None,
+            'attempts': 5,
+            'total_games': 0,
+            'wins': 0,
+            'total': 5,
+            'game_list': [],
+            'bot_list': [],
+            'set_attempts': 'NotSet',
+            'user_number': False,
+            'bot_taily': 'empty',
+            'bot_win': False,
+            'bot_pobeda': 0,
+            'language': 0,
+            'start_time': start_time,
+            'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False},
+            'chemp_result': 0
+        }
+        # users[message.from_user.id] = user_belongnes
+        # users[message.from_user.id]['user_name'] = user_name
+        # users[message.from_user.id]['start_time'] = start_time
     time.sleep(1)
     await message.answer('Если хотите установить количество попыток введите число от 1 до 10\n'
                          'По умолчанию у вас 5 попыток')
+    pprint(users) # log
 
 
 @dp.message(F.content_type != ContentType.TEXT)
@@ -151,18 +175,18 @@ async def chempionat(message: Message):
 async def user_attempt(message: Message):
     if not users[message.from_user.id]['in_game']:
         users[message.from_user.id]['user_number'] = 'setting_data'
+        users[message.from_user.id]['set_attempts'] = "SET"
         if message.text.isdigit() and int(message.text) < 11:
             users[message.from_user.id]['attempts'] = int(message.text)
             users[message.from_user.id]['total'] = int(message.text)
-            users[message.from_user.id]['set_attempts'] = "SET"
             await message.answer(language_dict['attempts number is'][users[message.from_user.id]['language']] +
                                  str(users[message.from_user.id]["attempts"]) + " \n" +
                                  language_dict['give 1-100'][users[message.from_user.id]['language']])
         else:
             users[message.from_user.id]['attempts'] = 5
             users[message.from_user.id]['total'] = 5
-            users[message.from_user.id]['set_attempts'] = "SET"
             await message.answer(language_dict['number your attempts'][users[message.from_user.id]['language']])
+        pprint(users)
     else:
         await message.answer(
             language_dict['last att'][users[message.from_user.id]['language']] + str({users[message.from_user.id]["attempts"]}))
@@ -176,13 +200,11 @@ async def bot_win(message: Message):
     await message.answer(language_dict['My namber was'][users[message.from_user.id]['language']] +
                          str(users[message.from_user.id]['secret_number']))
     await message.answer(language_dict['render new att'][users[message.from_user.id]['language']])
-    users[message.from_user.id]['in_game'] = False
     users[message.from_user.id]['set_attempts'] = 'NotSet'
-    users[message.from_user.id]['bot_win'] = False
-    users[message.from_user.id]['bot_list'] = []
-    users[message.from_user.id]['game_list'] = []
     users[message.from_user.id]['bot_pobeda'] += 1
-    users[message.from_user.id]['total_games'] += 1
+    userID = message.from_user.id
+    reset_user_dict_after_finish(users, userID)
+
     if users[message.from_user.id]['chemp_result'] == 5:
         await message.answer('Chemp finish'),
         await chempionat(message)
@@ -198,6 +220,7 @@ async def set_user_number(message: Message):
             await message.answer('Вы загадали Число, я тоже !\n Начинайте угадывать моё число !')
             userID = message.from_user.id
             choosing_number(users, userID)
+            #print(users)  #log
         else:
             await message.answer(language_dict['taily is guessed'][users[message.from_user.id]['language']])
     else:
@@ -206,7 +229,7 @@ async def set_user_number(message: Message):
 
 # Этот хэндлер будет срабатывать на согласие пользователя сыграть в игру
 @dp.message(F.text.lower().in_(positiv_answer))
-@dp.message(lambda message: users[message.from_user.id]['set_attempts'] == 'SET' and not message.text.isdigit)
+@dp.message(lambda message: users[message.from_user.id]['set_attempts'] == 'SET' and not message.text.isdigit())
 async def process_positive_answer(message: Message):
     if users[message.from_user.id]['user_number'] == 'setting_data':
         # print("********JJJ*****", users[message.from_user.id]['user_number']) log
@@ -215,6 +238,8 @@ async def process_positive_answer(message: Message):
         if not users[message.from_user.id]['in_game']:
             userID = message.from_user.id
             choosing_number(users, userID)
+            # pprint(users) log
+
             # print('bot taily = ', users[message.from_user.id]['bot_taily']) log
             if not users[message.from_user.id]['chemp']['status']:
                 await message.answer(language_dict['Bot guessed'][users[message.from_user.id]['language']] +
@@ -308,20 +333,18 @@ async def process_numbers_answer(message: Message):
         if users[message.from_user.id]['chemp']['status']:
             users[message.from_user.id]['chemp_result'] += 1
         if int(message.text) == users[message.from_user.id]['secret_number']:
-            users[message.from_user.id]['in_game'] = False
-            users[message.from_user.id]['total_games'] += 1
-            users[message.from_user.id]['wins'] += 1
-            users[message.from_user.id]['game_list'] = []
-            users[message.from_user.id]['attempts'] = users[message.from_user.id]['total']
             users[message.from_user.id]['user_number'] = False
-            users[message.from_user.id]['bot_win'] = False
-            users[message.from_user.id]['bot_list'] = []
-            await message.answer(
-                language_dict['wow'][users[message.from_user.id]['language']] +
-                users[message.from_user.id]['user_name'] +
-                language_dict['user guessed'][users[message.from_user.id]['language']] +
-                str(users[message.from_user.id]["secret_number"]))
+            users[message.from_user.id]['wins'] += 1
+            userID = message.from_user.id
+            reset_user_dict_after_finish(users, userID)
+
+
+            await message.answer(language_dict['wow'][users[message.from_user.id]['language']] +
+                                    users[message.from_user.id]['user_name'] +
+                                    language_dict['user guessed'][users[message.from_user.id]['language']] +
+                                    str(users[message.from_user.id]["secret_number"]))
             await message.answer_sticker(sticker_dict['win'])
+            await message.answer(language_dict['play new game after user wins'][users[message.from_user.id]['language']])
             if users[message.from_user.id]['chemp_result'] == 5:
                 await message.answer('Chemp finish'),
                 await chempionat(message)
@@ -352,13 +375,10 @@ async def process_numbers_answer(message: Message):
                 await message.answer(language_dict['dont repeat your number'][users[message.from_user.id]['language']])
 
         if users[message.from_user.id]['attempts'] == 0:
-            users[message.from_user.id]['in_game'] = False
-            users[message.from_user.id]['attempts'] = users[message.from_user.id]['total']
-            users[message.from_user.id]['total_games'] += 1
-            users[message.from_user.id]['game_list'] = []
             users[message.from_user.id]['user_number'] = 'setting_data'
-            users[message.from_user.id]['bot_list'] = []
-            users[message.from_user.id]['bot_win'] = False
+            userID = message.from_user.id
+            reset_user_dict_after_finish(users, userID)
+            users[message.from_user.id]['attempts'] = users[message.from_user.id]['total']
             await message.answer(language_dict['unf'][users[message.from_user.id]['language']] +
                                  users[message.from_user.id]["user_name"] +
                                  language_dict['no att lost'][users[message.from_user.id]['language']] +
@@ -391,6 +411,7 @@ async def process_other_answers(message: Message):
     else:
         await message.answer(language_dict['silly bot'][users[message.from_user.id]['language']])
         await message.answer_sticker(sticker_dict['silly bot'])
+
 
 if __name__ == '__main__':
     dp.run_polling(bot)
