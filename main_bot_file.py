@@ -6,8 +6,8 @@ from Token import token_bot
 from lexicon import *
 from UserFilter import BOT_WIN, SET_ATT, CHEMPION
 from External_function import verify_number, choosing_number, time_counter, reset_user_dict_after_finish
-from config import users #, user_belongnes
-from pprint import pprint
+from config import users, user_belongnes
+#  from pprint import pprint  #  Раскомментировать для вывода логов
 
 BOT_TOKEN = token_bot
 # Создаем объекты бота и диспетчера
@@ -24,35 +24,15 @@ async def process_start_command(message: Message):
     await message.answer(
         f'Привет, {message.chat.first_name} !\n {start_greeding}')
     # Если пользователь только запустил бота и его нет в словаре 'users - добавляем его в словарь
-
     if message.from_user.id not in users:
-        users[message.from_user.id] = {
-            'user_name': user_name,
-            'in_game': False,
-            'secret_number': None,
-            'attempts': 5,
-            'total_games': 0,
-            'wins': 0,
-            'total': 5,
-            'game_list': [],
-            'bot_list': [],
-            'set_attempts': 'NotSet',
-            'user_number': False,
-            'bot_taily': 'empty',
-            'bot_win': False,
-            'bot_pobeda': 0,
-            'language': 0,
-            'start_time': start_time,
-            'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False},
-            'chemp_result': 0
-        }
-        # users[message.from_user.id] = user_belongnes
-        # users[message.from_user.id]['user_name'] = user_name
-        # users[message.from_user.id]['start_time'] = start_time
+        users[message.from_user.id] = user_belongnes.copy()#{
+        users[message.from_user.id]['user_name']= user_name
+        users[message.from_user.id]['start_time']= start_time
     time.sleep(1)
     await message.answer('Если хотите установить количество попыток введите число от 1 до 10\n'
                          'По умолчанию у вас 5 попыток')
-    pprint(users) # log
+    #print('Only print, when new User start bot') log
+    #pprint(users) # log
 
 
 @dp.message(F.content_type != ContentType.TEXT)
@@ -186,7 +166,7 @@ async def user_attempt(message: Message):
             users[message.from_user.id]['attempts'] = 5
             users[message.from_user.id]['total'] = 5
             await message.answer(language_dict['number your attempts'][users[message.from_user.id]['language']])
-        pprint(users)
+        #  pprint(users) log
     else:
         await message.answer(
             language_dict['last att'][users[message.from_user.id]['language']] + str({users[message.from_user.id]["attempts"]}))

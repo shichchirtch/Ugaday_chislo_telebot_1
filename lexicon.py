@@ -90,9 +90,9 @@ language_dict = {'if not start': ('Для начала работы с бото�
                       'What attempt do you want to guess now? \nEnter a number from 1 to 10',
                       'Welchen Versuch willst du jetzt erraten? \nGeben Sie eine Zahl zwischen 1 und 10 ein'),
 
-                 'taily is guessed': ('Вы загадали Число, я тоже !\nНачинаем игру ?',
-                      "You guessed a Number, so did I!\nLet's start the Game?",
-                      'Du hast eine Zahl erraten, ich auch!\nLasst uns das Spiel beginnen?'),
+                 'taily is guessed': ('Вы загадали Число !\nНачинаем игру ?',
+                      "You guessed a Number !\nLet's start the Game?",
+                      'Du hast eine Zahl erraten !\nLasst uns das Spiel beginnen?'),
 
                  '1-100': ('Загадайте для меня число от 1 до 100',
                       'Render me a number from 1 to 100',
