@@ -23,7 +23,6 @@ class CHEMPION(BaseFilter):
 
 class RESTART(BaseFilter):
     async def __call__(self, message:Message):
-        if users:
-            if users[message.from_user.id]['start_time']:
-                return False
+        if message.from_user.id in users:
+            return False
         return True
