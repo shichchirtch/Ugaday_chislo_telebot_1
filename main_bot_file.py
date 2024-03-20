@@ -18,8 +18,6 @@ logging.basicConfig(level='WARNING',
                     )
 
 class My_DATA_LogFilter(logging.Filter):
-    # Переопределяем метод filter, который принимает `self` и `record`
-    # Переменная рекорд будет ссылаться на объект класса LogRecord
     def filter(self, record):
         return record.levelname == 'WARNING'
 
@@ -243,14 +241,14 @@ async def set_user_number(message: Message):
 @dp.message(F.text.lower().in_(positiv_answer))
 @dp.message(lambda message: users[message.from_user.id]['set_attempts'] == 'SET' and not message.text.isdigit())
 async def process_positive_answer(message: Message):
+    std_out_logger.info(f'Юзер {users[message.from_user.id]["user_name"]} загадал Число {users[message.from_user.id]["user_number"]}')
     if users[message.from_user.id]['user_number'] == 'setting_data':
-        std_out_logger.info(f'Юзер {users[message.from_user.id]["user_name"]} загадал Число {users[message.from_user.id]["user_number"]}')
+
         await message.answer(language_dict['new number'][users[message.from_user.id]['language']])
     else:
         if not users[message.from_user.id]['in_game']:
             userID = message.from_user.id
             choosing_number(users, userID)
-
             logger.warning(f'Структура словаря users =  {users}')
             std_out_logger.info(f'bot taily =  {users[message.from_user.id]["bot_taily"]} ')
             users[message.from_user.id]['user_number']
