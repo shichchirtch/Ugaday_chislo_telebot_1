@@ -37,7 +37,7 @@ async def chempionat(message: Message):
     users[message.from_user.id]['chemp_result'] = 0
 
 @Game_router.message(SET_ATT())
-async def user_attempt(message: Message):
+async def user_attempt(message: Message):  # Сюда попадает число при установке количества попыток для угадывания
     if not users[message.from_user.id]['in_game']:
         users[message.from_user.id]['user_number'] = 'setting_data'
         users[message.from_user.id]['set_attempts'] = "SET"
@@ -74,7 +74,7 @@ async def bot_win(message: Message):
     users[message.from_user.id]['set_attempts'] = 'NotSet'
     users[message.from_user.id]['bot_pobeda'] += 1
     userID = message.from_user.id
-    reset_user_dict_after_finish(users, userID)
+    reset_user_dict_after_finish(users, userID)  # Здесь происходит перезапись значений в словаре юзера
 
     if users[message.from_user.id]['chemp_result'] == 5:
         await message.answer('Chemp finish'),
@@ -85,9 +85,9 @@ async def bot_win(message: Message):
 async def set_user_number(message: Message):
     if message.text.isdigit() and int(message.text) < 100:
         users[message.from_user.id]['user_number'] = int(message.text)
-        std_out_logger.info(f"Выводится статус чемпионата : status =   {users[message.from_user.id]['chemp']['status']}")
+        std_out_logger.info(f"\nВыводится статус чемпионата : status =   {users[message.from_user.id]['chemp']['status']}")
 
-        if users[message.from_user.id]['chemp']['status']:
+        if users[message.from_user.id]['chemp']['status']: # Если пользователь играет в  чемпионат
             await message.answer(text='Вы загадали Число, я тоже !\n Начинайте угадывать моё число !',
                                  reply_markup=ReplyKeyboardRemove())
             userID = message.from_user.id
@@ -95,6 +95,8 @@ async def set_user_number(message: Message):
             logger.warning(f'Структура словаря users =  {users}')# print(users)  #log
             std_out_logger.warning(f"BOT's NUMBER = {users[message.from_user.id]['secret_number']}")
         else:
+            users[message.from_user.id]['user_number'] = int(message.text)  # Здесь происходить загадывание номерая юзером для бота
+            std_out_logger.info(f'Юзер {users[message.from_user.id]["user_name"]} загадал число {users[message.from_user.id]["user_number"]}')
             await message.answer(text=language_dict['taily is guessed'][users[message.from_user.id]['language']],
                                  reply_markup=keyboard1)
 
@@ -119,9 +121,9 @@ async def process_positive_answer(message: Message):
             choosing_number(users, userID)
             logger.warning(f'Структура словаря users =  {users}')
             std_out_logger.info(f'BOTs NUMBER  =  {users[message.from_user.id]["secret_number"]} ')
-            std_out_logger.info(f'Юзер {users[message.from_user.id]["user_name"]} загадал число {users[message.from_user.id]["user_number"]}')
 
             if not users[message.from_user.id]['chemp']['status']:
+
                 await message.answer(language_dict['Bot guessed'][users[message.from_user.id]['language']] +
                                      str(users[message.from_user.id]["attempts"]) +
                                      language_dict['Bot guessed part2'][users[message.from_user.id]['language']],
@@ -165,11 +167,13 @@ async def process_numbers_answer(message: Message):
                     users[message.from_user.id]['bot_taily'] = (users[message.from_user.id]['bot_taily'] -
                                                                 (users[message.from_user.id]['bot_list'][-2] -
                                                                  users[message.from_user.id]['bot_list'][-1]) // 2)
+
                     users[message.from_user.id]['bot_list'].append(
                         verify_number(users[message.from_user.id]['bot_taily'],
                                       users[message.from_user.id]['bot_list']))
                     if users[message.from_user.id]['bot_taily'] == users[message.from_user.id]['user_number']:
                         users[message.from_user.id]['bot_win'] = True
+
                 else:
                     std_out_logger.info(f'2 bot_list=  {users[message.from_user.id]["bot_list"]} ')
 
@@ -196,7 +200,7 @@ async def process_numbers_answer(message: Message):
             else:  # число меньше загаданного пользователем
                 if users[message.from_user.id]['bot_list'][-1] < users[message.from_user.id]['bot_list'][-2]:
                     std_out_logger.info(f'4 bot_list=  {users[message.from_user.id]["bot_list"]} ')
-                    users[message.from_user.id]['bot_taily'] = (1 + users[message.from_user.id]['bot_taily'] +
+                    users[message.from_user.id]['bot_taily'] = (users[message.from_user.id]['bot_taily'] +
                                                                 ((users[message.from_user.id]['bot_list'][-2] -
                                                                   users[message.from_user.id]['bot_list'][-1]) // 2))
 
@@ -220,10 +224,10 @@ async def process_numbers_answer(message: Message):
         if users[message.from_user.id]['chemp']['status']:
             users[message.from_user.id]['chemp_result'] += 1
         if int(message.text) == users[message.from_user.id]['secret_number']:
-            users[message.from_user.id]['user_number'] = False
+            # users[message.from_user.id]['user_number'] = False
             users[message.from_user.id]['wins'] += 1
             userID = message.from_user.id
-            reset_user_dict_after_finish(users, userID)
+            reset_user_dict_after_finish(users, userID)  # Здесь происходит перезапись значений в словаре юзера
 
             await message.answer(language_dict['wow'][users[message.from_user.id]['language']] +
                                  users[message.from_user.id]['user_name'] +
@@ -262,14 +266,15 @@ async def process_numbers_answer(message: Message):
                 await message.answer(language_dict['dont repeat your number'][users[message.from_user.id]['language']])
 
         if users[message.from_user.id]['attempts'] == 0:
-            users[message.from_user.id]['user_number'] = 'setting_data'
+            # users[message.from_user.id]['user_number'] = 'setting_data'
             userID = message.from_user.id
-            reset_user_dict_after_finish(users, userID)
+            reset_user_dict_after_finish(users, userID) # Здесь происходит перезапись значений в словаре юзера
             users[message.from_user.id]['attempts'] = users[message.from_user.id]['total']
             await message.answer(language_dict['unf'][users[message.from_user.id]['language']] +
                                  users[message.from_user.id]["user_name"] +
                                  language_dict['no att lost'][users[message.from_user.id]['language']] +
                                  str(users[message.from_user.id]["secret_number"]))
+
             time.sleep(1)
             await message.answer_sticker(sticker_dict['no att'])
             std_out_logger.info(f"\n*** This game is over for user {users[message.from_user.id]['user_name']} ***\n")

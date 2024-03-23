@@ -1,42 +1,74 @@
-[2024-03-23 17:26:56,511] #INFO     Comands_Handlers.py:20 - STD_out - Имя Пользователя Ivan
-[2024-03-23 17:26:58,022] #INFO     Comands_Handlers.py:35 - STD_out - 
+[2024-03-24 00:06:12,872] #INFO     Comands_Handlers.py:35 - STD_out - 
 Бот запустил Ivan
-[2024-03-23 17:26:58,022] #WARNING  Comands_Handlers.py:37 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': False, 'secret_number': None, 'attempts': 5, 'total_games': 0, 'wins': 0, 'total': 5, 'game_list': [], 'bot_list': [], 'set_attempts': 'NotSet', 'user_number': False, 'bot_taily': 'empty', 'bot_win': False, 'bot_pobeda': 0, 'language': 0, 'start_time': 892305.14, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
-[2024-03-23 17:26:59,537] #WARNING  Game_handlers.py:56 - LOGGER_BOSS - Изменения словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': False, 'secret_number': None, 'attempts': 1, 'total_games': 0, 'wins': 0, 'total': 1, 'game_list': [], 'bot_list': [], 'set_attempts': 'SET', 'user_number': 'setting_data', 'bot_taily': 'empty', 'bot_win': False, 'bot_pobeda': 0, 'language': 0, 'start_time': 892305.14, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
-[2024-03-23 17:27:05,089] #INFO     Game_handlers.py:88 - STD_out - Выводится статус чемпионата : status =   False
-[2024-03-23 17:27:07,567] #WARNING  Game_handlers.py:120 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 73, 'attempts': 1, 'total_games': 0, 'wins': 0, 'total': 1, 'game_list': [], 'bot_list': [46], 'set_attempts': 'reSET', 'user_number': 77, 'bot_taily': 46, 'bot_win': False, 'bot_pobeda': 0, 'language': 0, 'start_time': 892305.14, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
-[2024-03-23 17:27:07,567] #INFO     Game_handlers.py:121 - STD_out - BOTs NUMBER  =  73 
-[2024-03-23 17:27:07,567] #INFO     Game_handlers.py:122 - STD_out - Юзер Ivan загадал число 77
-[2024-03-23 17:27:10,190] #INFO     Game_handlers.py:189 - STD_out - 3 bot_list=  [46] 
-[2024-03-23 17:27:12,030] #INFO     Game_handlers.py:275 - STD_out - 
-*** This game is over for user Ivan ***
-
-[2024-03-23 17:27:21,175] #INFO     Game_handlers.py:111 - STD_out - Юзер Ivan играет 2 игру
-[2024-03-23 17:27:31,407] #INFO     Game_handlers.py:88 - STD_out - Выводится статус чемпионата : status =   True
-[2024-03-23 17:27:31,492] #WARNING  Game_handlers.py:95 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 16, 'attempts': 1, 'total_games': 1, 'wins': 0, 'total': 1, 'game_list': [], 'bot_list': [90], 'set_attempts': 'reSET', 'user_number': 22, 'bot_taily': 90, 'bot_win': False, 'bot_pobeda': 0, 'language': 0, 'start_time': 892305.14, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': True}, 'chemp_result': 0}}
-[2024-03-23 17:27:31,492] #WARNING  Game_handlers.py:96 - STD_out - BOT's NUMBER = 16
-[2024-03-23 17:27:35,169] #INFO     Game_handlers.py:275 - STD_out - 
-*** This game is over for user Ivan ***
-
-[2024-03-23 17:27:38,468] #INFO     Game_handlers.py:88 - STD_out - Выводится статус чемпионата : status =   True
-[2024-03-23 17:27:38,672] #WARNING  Game_handlers.py:95 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 26, 'attempts': 1, 'total_games': 2, 'wins': 0, 'total': 1, 'game_list': [], 'bot_list': [74], 'set_attempts': 'reSET', 'user_number': 22, 'bot_taily': 74, 'bot_win': False, 'bot_pobeda': 0, 'language': 0, 'start_time': 892305.14, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': True}, 'chemp_result': 1}}
-[2024-03-23 17:27:38,672] #WARNING  Game_handlers.py:96 - STD_out - BOT's NUMBER = 26
-[2024-03-23 17:27:41,691] #INFO     Game_handlers.py:275 - STD_out - 
-*** This game is over for user Ivan ***
-
-[2024-03-23 17:27:44,157] #INFO     Game_handlers.py:88 - STD_out - Выводится статус чемпионата : status =   True
-[2024-03-23 17:27:44,226] #WARNING  Game_handlers.py:95 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 33, 'attempts': 1, 'total_games': 3, 'wins': 0, 'total': 1, 'game_list': [], 'bot_list': [57], 'set_attempts': 'reSET', 'user_number': 22, 'bot_taily': 57, 'bot_win': False, 'bot_pobeda': 0, 'language': 0, 'start_time': 892305.14, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': True}, 'chemp_result': 2}}
-[2024-03-23 17:27:44,227] #WARNING  Game_handlers.py:96 - STD_out - BOT's NUMBER = 33
-[2024-03-23 17:27:58,655] #WARNING  Game_handlers.py:120 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 1, 'attempts': 1, 'total_games': 4, 'wins': 1, 'total': 1, 'game_list': [], 'bot_list': [36], 'set_attempts': 'reSET', 'user_number': False, 'bot_taily': 36, 'bot_win': False, 'bot_pobeda': 0, 'language': 0, 'start_time': 892305.14, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': True}, 'chemp_result': 3}}
-[2024-03-23 17:27:58,656] #INFO     Game_handlers.py:121 - STD_out - BOTs NUMBER  =  1 
-[2024-03-23 17:27:58,656] #INFO     Game_handlers.py:122 - STD_out - Юзер Ivan загадал число False
-[2024-03-23 17:28:04,069] #INFO     Game_handlers.py:275 - STD_out - 
-*** This game is over for user Ivan ***
-
-[2024-03-23 17:28:07,478] #INFO     Game_handlers.py:88 - STD_out - Выводится статус чемпионата : status =   True
-[2024-03-23 17:28:07,549] #WARNING  Game_handlers.py:95 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 100, 'attempts': 1, 'total_games': 5, 'wins': 1, 'total': 1, 'game_list': [], 'bot_list': [31], 'set_attempts': 'reSET', 'user_number': 44, 'bot_taily': 31, 'bot_win': False, 'bot_pobeda': 0, 'language': 0, 'start_time': 892305.14, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': True}, 'chemp_result': 4}}
-[2024-03-23 17:28:07,549] #WARNING  Game_handlers.py:96 - STD_out - BOT's NUMBER = 100
-[2024-03-23 17:28:13,526] #INFO     Game_handlers.py:189 - STD_out - 3 bot_list=  [31] 
-[2024-03-23 17:28:14,991] #INFO     Game_handlers.py:275 - STD_out - 
-*** This game is over for user Ivan ***
-
+[2024-03-24 00:06:12,872] #WARNING  Comands_Handlers.py:37 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': False, 'secret_number': None, 'attempts': 5, 'total_games': 0, 'wins': 0, 'total': 5, 'game_list': [], 'bot_list': [], 'set_attempts': 'NotSet', 'user_number': False, 'bot_taily': 'empty', 'bot_win': False, 'bot_pobeda': 0, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:06:17,912] #WARNING  Game_handlers.py:56 - LOGGER_BOSS - Изменения словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': False, 'secret_number': None, 'attempts': 10, 'total_games': 0, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [], 'set_attempts': 'SET', 'user_number': 'setting_data', 'bot_taily': 'empty', 'bot_win': False, 'bot_pobeda': 0, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:06:19,726] #INFO     Game_handlers.py:88 - STD_out - 
+Выводится статус чемпионата : status =   False
+[2024-03-24 00:06:19,726] #INFO     Game_handlers.py:99 - STD_out - Юзер Ivan загадал число 1
+[2024-03-24 00:06:21,677] #WARNING  Game_handlers.py:122 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 81, 'attempts': 10, 'total_games': 0, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [63], 'set_attempts': 'reSET', 'user_number': 1, 'bot_taily': 63, 'bot_win': False, 'bot_pobeda': 0, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:06:21,677] #INFO     Game_handlers.py:123 - STD_out - BOTs NUMBER  =  81 
+[2024-03-24 00:06:24,185] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [63, 31] 
+[2024-03-24 00:06:24,871] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [63, 31, 15] 
+[2024-03-24 00:06:25,627] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [63, 31, 15, 7] 
+[2024-03-24 00:06:26,525] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [63, 31, 15, 7, 3] 
+[2024-03-24 00:06:44,487] #WARNING  Game_handlers.py:56 - LOGGER_BOSS - Изменения словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': False, 'secret_number': 81, 'attempts': 10, 'total_games': 1, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [], 'set_attempts': 'SET', 'user_number': 'setting_data', 'bot_taily': 1, 'bot_win': False, 'bot_pobeda': 1, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:06:48,832] #INFO     Game_handlers.py:88 - STD_out - 
+Выводится статус чемпионата : status =   False
+[2024-03-24 00:06:48,832] #INFO     Game_handlers.py:99 - STD_out - Юзер Ivan загадал число 3
+[2024-03-24 00:06:50,427] #WARNING  Game_handlers.py:122 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 35, 'attempts': 10, 'total_games': 1, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [3], 'set_attempts': 'reSET', 'user_number': 3, 'bot_taily': 3, 'bot_win': False, 'bot_pobeda': 1, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:06:50,427] #INFO     Game_handlers.py:123 - STD_out - BOTs NUMBER  =  35 
+[2024-03-24 00:06:55,926] #INFO     Game_handlers.py:193 - STD_out - 3 bot_list=  [3] 
+[2024-03-24 00:07:46,968] #WARNING  Game_handlers.py:56 - LOGGER_BOSS - Изменения словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': False, 'secret_number': 35, 'attempts': 10, 'total_games': 2, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [], 'set_attempts': 'SET', 'user_number': 'setting_data', 'bot_taily': 52, 'bot_win': False, 'bot_pobeda': 2, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:07:49,826] #INFO     Game_handlers.py:88 - STD_out - 
+Выводится статус чемпионата : status =   False
+[2024-03-24 00:07:49,826] #INFO     Game_handlers.py:99 - STD_out - Юзер Ivan загадал число 1
+[2024-03-24 00:07:51,433] #WARNING  Game_handlers.py:122 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 83, 'attempts': 10, 'total_games': 2, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [77], 'set_attempts': 'reSET', 'user_number': 1, 'bot_taily': 77, 'bot_win': False, 'bot_pobeda': 2, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:07:51,433] #INFO     Game_handlers.py:123 - STD_out - BOTs NUMBER  =  83 
+[2024-03-24 00:07:54,151] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [77, 38] 
+[2024-03-24 00:07:54,887] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [77, 38, 19] 
+[2024-03-24 00:07:55,623] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [77, 38, 19, 10] 
+[2024-03-24 00:07:56,445] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [77, 38, 19, 10, 6] 
+[2024-03-24 00:07:57,167] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [77, 38, 19, 10, 6, 4] 
+[2024-03-24 00:07:57,897] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [77, 38, 19, 10, 6, 4, 3] 
+[2024-03-24 00:07:59,131] #INFO     Game_handlers.py:178 - STD_out - 2 bot_list=  [77, 38, 19, 10, 6, 4, 3, 5] 
+[2024-03-24 00:08:02,460] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [77, 38, 19, 10, 6, 4, 3, 5, 2] 
+[2024-03-24 00:08:14,890] #WARNING  Game_handlers.py:56 - LOGGER_BOSS - Изменения словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': False, 'secret_number': 83, 'attempts': 10, 'total_games': 3, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [], 'set_attempts': 'SET', 'user_number': 'setting_data', 'bot_taily': 1, 'bot_win': False, 'bot_pobeda': 3, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:08:19,008] #INFO     Game_handlers.py:88 - STD_out - 
+Выводится статус чемпионата : status =   False
+[2024-03-24 00:08:19,008] #INFO     Game_handlers.py:99 - STD_out - Юзер Ivan загадал число 3
+[2024-03-24 00:08:21,305] #WARNING  Game_handlers.py:122 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 29, 'attempts': 10, 'total_games': 3, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [29], 'set_attempts': 'reSET', 'user_number': 3, 'bot_taily': 29, 'bot_win': False, 'bot_pobeda': 3, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:08:21,306] #INFO     Game_handlers.py:123 - STD_out - BOTs NUMBER  =  29 
+[2024-03-24 00:08:23,740] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [29, 14] 
+[2024-03-24 00:08:24,877] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [29, 14, 7] 
+[2024-03-24 00:08:25,640] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [29, 14, 7, 4] 
+[2024-03-24 00:09:05,389] #WARNING  Game_handlers.py:56 - LOGGER_BOSS - Изменения словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': False, 'secret_number': 29, 'attempts': 10, 'total_games': 4, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [], 'set_attempts': 'SET', 'user_number': 'setting_data', 'bot_taily': 3, 'bot_win': False, 'bot_pobeda': 4, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:09:10,841] #INFO     Game_handlers.py:88 - STD_out - 
+Выводится статус чемпионата : status =   False
+[2024-03-24 00:09:10,841] #INFO     Game_handlers.py:99 - STD_out - Юзер Ivan загадал число 11
+[2024-03-24 00:09:12,531] #WARNING  Game_handlers.py:122 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 93, 'attempts': 10, 'total_games': 4, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [91], 'set_attempts': 'reSET', 'user_number': 11, 'bot_taily': 91, 'bot_win': False, 'bot_pobeda': 4, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:09:12,531] #INFO     Game_handlers.py:123 - STD_out - BOTs NUMBER  =  93 
+[2024-03-24 00:09:16,044] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [91, 45] 
+[2024-03-24 00:09:16,910] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [91, 45, 22] 
+[2024-03-24 00:09:23,033] #WARNING  Game_handlers.py:56 - LOGGER_BOSS - Изменения словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': False, 'secret_number': 93, 'attempts': 10, 'total_games': 5, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [], 'set_attempts': 'SET', 'user_number': 'setting_data', 'bot_taily': 11, 'bot_win': False, 'bot_pobeda': 5, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:09:28,137] #INFO     Game_handlers.py:88 - STD_out - 
+Выводится статус чемпионата : status =   False
+[2024-03-24 00:09:28,137] #INFO     Game_handlers.py:99 - STD_out - Юзер Ivan загадал число 97
+[2024-03-24 00:09:29,389] #WARNING  Game_handlers.py:122 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 36, 'attempts': 10, 'total_games': 5, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [74], 'set_attempts': 'reSET', 'user_number': 97, 'bot_taily': 74, 'bot_win': False, 'bot_pobeda': 5, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:09:29,389] #INFO     Game_handlers.py:123 - STD_out - BOTs NUMBER  =  36 
+[2024-03-24 00:09:31,097] #INFO     Game_handlers.py:193 - STD_out - 3 bot_list=  [74] 
+[2024-03-24 00:09:31,901] #INFO     Game_handlers.py:218 - STD_out - 5 bot_list=  [74, 88] 
+[2024-03-24 00:09:32,778] #INFO     Game_handlers.py:218 - STD_out - 5 bot_list=  [74, 88, 96] 
+[2024-03-24 00:09:33,515] #INFO     Game_handlers.py:178 - STD_out - 2 bot_list=  [74, 88, 96, 100] 
+[2024-03-24 00:09:34,592] #INFO     Game_handlers.py:166 - STD_out - 1 bot_list=  [74, 88, 96, 100, 98] 
+[2024-03-24 00:09:47,302] #WARNING  Game_handlers.py:56 - LOGGER_BOSS - Изменения словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': False, 'secret_number': 36, 'attempts': 10, 'total_games': 6, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [], 'set_attempts': 'SET', 'user_number': 'setting_data', 'bot_taily': 97, 'bot_win': False, 'bot_pobeda': 6, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:10:08,896] #INFO     Game_handlers.py:88 - STD_out - 
+Выводится статус чемпионата : status =   False
+[2024-03-24 00:10:08,896] #INFO     Game_handlers.py:99 - STD_out - Юзер Ivan загадал число 99
+[2024-03-24 00:10:11,488] #WARNING  Game_handlers.py:122 - LOGGER_BOSS - Структура словаря users =  {6685637602: {'user_name': 'Ivan', 'in_game': True, 'secret_number': 24, 'attempts': 10, 'total_games': 6, 'wins': 0, 'total': 10, 'game_list': [], 'bot_list': [47], 'set_attempts': 'reSET', 'user_number': 99, 'bot_taily': 47, 'bot_win': False, 'bot_pobeda': 6, 'language': 0, 'start_time': 916260.25, 'chemp': {'count_bot_win': 0, 'count_user_win': 0, 'status': False}, 'chemp_result': 0}}
+[2024-03-24 00:10:11,488] #INFO     Game_handlers.py:123 - STD_out - BOTs NUMBER  =  24 
+[2024-03-24 00:10:15,549] #INFO     Game_handlers.py:193 - STD_out - 3 bot_list=  [47] 
+[2024-03-24 00:10:18,288] #INFO     Game_handlers.py:218 - STD_out - 5 bot_list=  [47, 74] 
+[2024-03-24 00:10:19,084] #INFO     Game_handlers.py:218 - STD_out - 5 bot_list=  [47, 74, 88] 
+[2024-03-24 00:10:20,001] #INFO     Game_handlers.py:218 - STD_out - 5 bot_list=  [47, 74, 88, 96] 
+[2024-03-24 00:10:20,732] #INFO     Game_handlers.py:178 - STD_out - 2 bot_list=  [47, 74, 88, 96, 100] 
+[2024-03-24 00:10:21,480] #INFO     Game_handlers.py:202 - STD_out - 4 bot_list=  [47, 74, 88, 96, 100, 98] 

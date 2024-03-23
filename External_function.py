@@ -9,10 +9,8 @@ def get_random_number() -> int:
 def verify_number(number: int, list_number: list[int]) -> int:
     if number not in list_number:
         return number
-    elif number + 1 not in list_number:
-        return number + 1
     else:
-        return number - 2
+        return (list_number[-2]+list_number[-3])//2
 
 
 def time_counter(start_time):
@@ -38,4 +36,5 @@ def reset_user_dict_after_finish(us_dict: dict, userID: int) -> dict:
     us_dict[userID]['game_list'] = []
     us_dict[userID]['total_games'] += 1
     us_dict[userID]['attempts'] = us_dict[userID]['total']
+    us_dict[userID]['user_number'] = 'setting_data'
     return us_dict
