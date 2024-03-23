@@ -1,6 +1,3 @@
-import time
-from aiogram.types import Message
-
 users = {}
 user_name = 'empty'  #message["message_id"]['from']['first_name']
 #Message.# message.chat.first_name
