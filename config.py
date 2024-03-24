@@ -1,6 +1,6 @@
 users = {}
-user_name = 'empty'  #message["message_id"]['from']['first_name']
-#Message.# message.chat.first_name
+user_name = 'empty'
+
 user_belongnes={
             'user_name': user_name,
             'in_game': False,
@@ -12,7 +12,7 @@ user_belongnes={
             'game_list': [],
             'bot_list': [],
             'set_attempts': 'NotSet',
-            'user_number': False,
+            'user_number': 'setting_data',
             'bot_taily': 'empty',
             'bot_win': False,
             'bot_pobeda': 0,

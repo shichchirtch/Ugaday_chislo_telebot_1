@@ -25,3 +25,12 @@ keyboard_attempts = ReplyKeyboardMarkup(
 keyboard_after_fail = ReplyKeyboardMarkup(
     keyboard=[[start_button_1, start_button_2],[att_button],[schet_button]],
     resize_keyboard=True)
+#создаю клавиатуру с одной с кнопками Да и Узнать счет.
+keyboard_after_saying_NO = ReplyKeyboardMarkup(
+    keyboard=[[start_button_1], [schet_button]],
+    resize_keyboard=True)
+
+keyboard_for_help = ReplyKeyboardMarkup(
+                    keyboard=[[start_button_1, start_button_2],
+                              [att_button]],
+                    resize_keyboard=True)

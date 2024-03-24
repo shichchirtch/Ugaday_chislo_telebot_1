@@ -23,3 +23,8 @@ std_out_logger = logging.getLogger('STD_out')
 std_out_logger.setLevel("INFO")
 std_out_handler = logging.StreamHandler(sys.stdout)
 std_out_logger.addHandler(std_out_handler)
+
+std_err_logger = logging.getLogger('ERR_out')
+std_err_logger.setLevel("INFO")
+std_err_handler = logging.StreamHandler(sys.stderr)
+std_err_logger.addHandler(std_err_handler)

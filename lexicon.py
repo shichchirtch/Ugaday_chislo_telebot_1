@@ -1,9 +1,14 @@
+
+
+
+
+
 start_greeding = ('Давайте сыграем в игру "Угадай число"?\n\n'
-                  'По умолчанию используется русский язык.\n'
-                  'Чтобы переключить язык на английский введите eng,\n'
-                  'чтобы переключить на немецкий введите de\n'
-                  'Change to Eglish - enter eng!\n'
-                  'Wecksel auf Deitsch - geben Sie de ein !\n'
+                  '\U0001f1f7\U0001f1fa По умолчанию используется русский язык.\n'
+                  '\U0001F7E2 Чтобы переключить язык на английский введите eng,\n'
+                  '\U0001F7E2 чтобы переключить на немецкий введите de\n'
+                  '\U0001f1ec\U0001f1e7 Change to Eglish - enter eng!\n'
+                  '\U0001f1e9\U0001f1ea Wecksel auf Deitsch - geben Sie de ein !\n'
                   'Чтобы получить правила игры и список доступных\n'
                   'команд - отправьте команду /help')
 # print(start_greeding)
@@ -11,12 +16,12 @@ language_dict = {'if not start': ('Для начала работы с бото�
                                   'To start interraction with the bot, enter /start',
                                   'Um mit dem Bot zu arbeiten, geben Sie /start ein'),
 
-                 'game rules': ('Правила игры:\n\nЯ загадываю число от 1 до 100, '
+                 'game rules': ('Правила игры:\n\nЯ загадываю число от 1\uFE0F\u20E3 до 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3, '
                                 f'а вам нужно его угадать\nУ вас есть заданное Вами количество попыток '
                                 f'попыток\n\nДоступные команды:\n/help - правила '
                                 f'игры и список команд\n/cancel - выйти из игры\n'
-                                f'/chemp - чемпионат из 5 игр с ботом\n\nСо скольки попыток Вы угадаете число ?'
-                                f'\n(Не больше 10 ! по умолчанию 5)'
+                                f'/chemp - чемпионат из 5\uFE0F\u20E3 игр с ботом\n\nСо скольки попыток Вы угадаете число ?'
+                                f'\n(Не больше \U0001f51f ! по умолчанию 5\uFE0F\u20E3)'
                                 f'\n/att - количество попыток с которых Вы хотите угадать число\n'
                                 f'/schet - Посмотреть счёт\n',
 
@@ -24,8 +29,8 @@ language_dict = {'if not start': ('Для начала работы с бото�
                                 'You need to guess it\nYou have the number of attempts specified by you'
                                 'attempts\n\nAvailable commands:\n/help - rules '
                                 'games and list of commands\n/cancel - quit the game\n'
-                                '/chemp - A Campship from 5 rounds with the BOT\n\nHow many attempts will it take you to guess the number?'
-                                '\n(No more than 10 ! default 5)'
+                                '/chemp - A Campship from 5\uFE0F\u20E3 rounds with the BOT\n\nHow many attempts will it take you to guess the number?'
+                                '\n(No more than \U0001f51f ! default 5\uFE0F\u20E3)'
                                 '\n/att - the number of attempts from which you want to guess the number\n'
                                 '/schet - View account\n',
 
@@ -33,8 +38,8 @@ language_dict = {'if not start': ('Для начала работы с бото�
                                 f'Sie müssen es erraten\nSie haben die von Ihnen angegebene Anzahl an Versuchen.'
                                 f'attempts\n\nVerfügbare Befehle:\n/help - Rules '
                                 f'Spiele und Liste der Befehle\n/Abbrechen – Spiel beenden\n'
-                                f'/chemp - Meisterschaft von 5 Spielen mit dem BOT\n\nWie viele Versuche werden Sie brauchen, um die Zahl zu erraten?'
-                                f'\n(Nicht mehr als 10 ! Standard 5)'
+                                f'/chemp - Meisterschaft von 5\uFE0F\u20E3 Spielen mit dem BOT\n\nWie viele Versuche werden Sie brauchen, um die Zahl zu erraten?'
+                                f'\n(Nicht mehr als \U0001f51f ! Standard 5\uFE0F\u20E3)'
                                 f'\n/att – die Anzahl der Versuche, aus denen Sie die Zahl erraten möchten\n'
                                 '/schet – Konto anzeigen\n'),
 
@@ -50,9 +55,9 @@ language_dict = {'if not start': ('Для начала работы с бото�
                                           "We don't play with you anyway.\nMaybe we can play once?",
                                           'Wir spielen sowieso nicht mit dir.\nVielleicht können wir einmal spielen?'),
 
-                 'set attempts number': ('Установить количество попыток введите число от 1 до 10',
-                                         'Set number of attempts, enter a number from 1 to 10',
-                                         'Anzahl der Versuche festlegen, Zahl von 1 bis 10 eingeben'),
+                 'set attempts number': ('Установить количество попыток введите число от 1\uFE0F\u20E3 до \U0001f51f',
+                                         'Set number of attempts, enter a number from 1\uFE0F\u20E3 to \U0001f51f',
+                                         'Anzahl der Versuche festlegen, Zahl von 1\uFE0F\u20E3 bis \U0001f51f eingeben'),
 
                  'attempts number is': ('Количество Ваших попыток = ',
                                         'Number of your attempts = ',
@@ -70,7 +75,7 @@ language_dict = {'if not start': ('Для начала работы с бото�
                                          'Render a number that I will have to guess!',
                                          'Geben Sie eine Zahl aus, die ich erraten muss!'),
 
-                 'give 1-100': ('Теперь загадайте число для меня от 1 до 100 !',
+                 'give 1-100': ('Теперь загадайте число для меня от 1\uFE0F\u20E3 до 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3 !',
                      'Now guess a number for me from 1 to 100!',
                      'Erraten Sie mir jetzt eine Zahl von 1 bis 100 !'),
 
@@ -90,9 +95,9 @@ language_dict = {'if not start': ('Для начала работы с бото�
                       'What attempt do you want to guess now? \nEnter a number from 1 to 10',
                       'Welchen Versuch willst du jetzt erraten? \nGeben Sie eine Zahl zwischen 1 und 10 ein'),
 
-                 'taily is guessed': ('Вы загадали Число !\nНачинаем игру ?',
-                      "You guessed a Number !\nLet's start the Game?",
-                      'Du hast eine Zahl erraten !\nLasst uns das Spiel beginnen?'),
+                 'taily is guessed': ('Вы загадали Число !\nНачинаем игру ? \U0001f3b0',
+                      "You guessed a Number !\nLet's start the Game? \U0001f3b0",
+                      'Du hast eine Zahl erraten !\nLasst uns das Spiel beginnen? \U0001f3b0 '),
 
                  '1-100': ('Загадайте для меня число от 1 до 100',
                       'Render me a number from 1 to 100',
@@ -102,36 +107,36 @@ language_dict = {'if not start': ('Для начала работы с бото�
                       'What number will you wish for me this time?',
                       'Welche Nummer wünschst du mir dieses Mal?'),
 
-                 'Bot guessed': ('Ура!\n\nЯ загадал число от 1 до 100,  попробуй угадать с ',
-                      'Well !\n\nI guessed a number from 1 to 100, try to guess it in ',
-                      'Gut !\n\nIch habe eine Zahl von 1 bis 100 erraten, versuche sie in '),
+                 'Bot guessed': ('Ура!  \U0001f37e \n\nЯ загадал число от 1 до 100,  попробуй угадать с ',
+                      'Well !  \U0001f37e \n\nI guessed a number from 1 to 100, try to guess it in ',
+                      'Gut !  \U0001f37e \n\nIch habe eine Zahl von 1 bis 100 erraten, versuche sie in '),
 
                  'Bot guessed part2': (' попыток !',
                       ' times !',
                       ' Versuchen zu erraten !'),
 
-                 'not digit sent in game': ('Пока мы играем в игру, я могу реагировать только на числа от 1до 100 и команды /cancel и /stat',
+                 'not digit sent in game': ('Пока мы играем в игру, я могу реагировать только на числа от 1 до 100 и команды /cancel и /stat',
                       'While we are playing the game I can only respond to numbers from 1 to 100 and the /cancel and /stat commands',
                       'Während wir das Spiel spielen, kann ich nur auf Zahlen von 1 bis 100 und die Befehle /cancel und /stat reagieren'),
 
-                 'pity': ('Жаль :(\n\nЕсли захотите поиграть - просто напишите об этом',
-                      "It's a pity :(\n\nIf you want to play, just write about it",
-                      'Schade :(\n\nWenn du mitspielen willst, schreib einfach darüber'),
+                 'pity': ('Жаль :(\n\nЕсли захотите поиграть - просто напишите об этом \U0001f197 \u2753',
+                      "It's a pity :(\n\nIf you want to play, just write about it  \U0001f197 \u2753",
+                      'Schade :(\n\nWenn du mitspielen willst, schreib einfach darüber \U0001f197 \u2753'),
 
                  'wrong sent data': ('Мы же сейчас с вами играем. \nПрисылайте, пожалуйста, числа от 1 до 100',
                                      "We're playing with you now. \nPlease send numbers from 1 to 100",
                                      'Wir spielen jetzt mit dir.\nBitte senden Sie Zahlen von 1 bis 100'),
 
-                 'wow': ('Ура !!! ', 'WELL ! SUPER !!! ', 'Sehr Gut ! '),
+                 'wow': ('Ура !!! \U0001f389 ', 'WELL ! SUPER !!! \U0001f389 ', 'Sehr Gut ! \U0001f389 '),
 
-                 'user guessed': (' Вы угадали !\nМоё число ',
-                      'You guessed my number ',
-                      'Du hast meine Nummer erraten '),
+                 'user guessed': (' Вы угадали !\U0001f3c6\nМоё число ',
+                      'You guessed my number \U0001f3c6 ',
+                      'Du hast meine Nummer erraten \U0001f3c6 '),
 
                  'play new game after user wins': ('\n\nМожет, сыграем еще?', '\n\nMaybe we can play again?',
                       '\n\nVielleicht können wir wieder spielen?'),
 
-                 'less': ('Мое число меньше', 'My number is less', 'Meine Zahl ist geringer'),
+                 'less': ('Мое число меньше \u2198\uFE0F', 'My number is less \u2198\uFE0F', 'Meine Zahl ist geringer \u2198\uFE0F'),
 
                  'bot says number': ('Я назову число ', "I will tell you the Number ", 'Ich sage dir die Nummer '),
 
@@ -139,16 +144,18 @@ language_dict = {'if not start': ('Для начала работы с бото�
                       'You know that this is not the number I wished for)))',
                       'Du weißt, dass das nicht die Nummer ist, die ich mir gewünscht habe)))'),
 
-                 'more': ('Мое число больше', 'My number is higher', 'Meine Zahl ist höher'),
+                 'more': ('Мое число больше \u2197\uFE0F', 'My number is higher \u2197\uFE0F', 'Meine Zahl ist höher \u2197\uFE0F'),
 
-                 'unf': ('К сожалению ', 'Unfortunatelly ', 'Leider '),
+                 'unf': ('\U0001F61E К сожалению ', '\U0001F61E Unfortunatelly ', '\U0001F61E Leider '),
 
                  'no att lost': (', у нас больше не осталось попыток. Никто не выиграл :(\n\nМое число было ',
 
                       ', we have no more attempts left. Nobody won :(\n\nMy number was',
                       ', wir haben keine weiteren Versuche mehr. Niemand hat gewonnen :(\n\nMeine Nummer war'),
 
-                 'again': ('\n\nДавайте сыграем ещё !', "\n\nLet's play again!", '\n\nLass uns nochmal spielen!'),
+                 'again': ('\n\nДавайте сыграем ещё ! \U0001F609',
+                           "\n\nLet's play again! \U0001F609",
+                           '\n\nLass uns nochmal spielen! \U0001F609'),
 
                  'in game false': ('Мы еще не играем. Хотите сыграть?\nУгадайте число с ',
                       "We're not playing yet. Do you want to play?\nGuess the number with ",
@@ -173,7 +180,12 @@ language_dict = {'if not start': ('Для начала работы с бото�
                       'Willst du ein Spiel spielen?'),
                  'restart': ('Нельзя запусть бота дважды !)))',
                              'This is impossible to start BOT twice',
-                             'Das ist unmöch den BOT zu restart')
+                             'Das ist unmöch den BOT zu restart'),
+
+                 'after_user_win':('Вы загадали Число !\nЯ тоже ! \nНачинайте отгадывать !',
+                                   'You guessed the Number!\nMe too! \nStart guessing!',
+                                    'Du hast die Zahl erraten!\nIch auch! \nFangen Sie an zu raten!'
+                                   )
                  }
 
 upper_tily_list = ['CAACAgIAAxkBAAEDsZFl2HQvjYlDvPNaL9pcfqZR4Pp5wQACfQ4AAqgILwh8uDWrBIcPxDQE',

@@ -23,7 +23,7 @@ def time_counter(start_time):
 def choosing_number(us_dict: dict, userID: int) -> dict:
     us_dict[userID]['in_game'] = True
     us_dict[userID]['secret_number'] = get_random_number()
-    us_dict[userID]['set_attempts'] = 'reSET'
+    us_dict[userID]['set_attempts'] = 'SET'
     us_dict[userID]['bot_taily'] = get_random_number()
     us_dict[userID]['bot_list'].append(us_dict[userID]['bot_taily'])
     return us_dict
@@ -37,4 +37,6 @@ def reset_user_dict_after_finish(us_dict: dict, userID: int) -> dict:
     us_dict[userID]['total_games'] += 1
     us_dict[userID]['attempts'] = us_dict[userID]['total']
     us_dict[userID]['user_number'] = 'setting_data'
+    us_dict[userID]['set_attempts'] = 'NotSet'
+    us_dict[userID]['bot_taily'] = 'empty'
     return us_dict
