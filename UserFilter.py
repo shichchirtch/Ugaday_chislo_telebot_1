@@ -29,11 +29,6 @@ class RESTART(BaseFilter):
             return False
         return True
 
-class ATTRIBUT_SET_ATTEMPTS_IS_SET(BaseFilter):
-    async def __call__(self, message:Message):
-        if users[message.from_user.id]['set_attempts'] == 'SET':
-            return True
-        return False
 class DATA_IS_NOT_DIGIT(BaseFilter):
     async  def __call__(self, message:Message):
         if not message.text.isdigit():

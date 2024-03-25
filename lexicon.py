@@ -67,21 +67,21 @@ language_dict = {'if not start': ('Для начала работы с бото�
                                             "Have You checked your result ? \nLet's go playing now ?",
                                             'Hast du dir die Rechnung angesehen? \nLass uns jetzt spielen?'),
 
-                 'start chemp': ('Начинаем чемпионат из 5 игр !',
-                                 "We're starting a 5-game championship!",
-                                 'Wir starten eine 5-Spiele-Meisterschaft!'),
+                 'start chemp': ('Начинаем чемпионат из 5\uFE0F\u20E3  игр !',
+                                 "We're starting a 5\uFE0F\u20E3 -game championship!",
+                                 'Wir starten eine 5\uFE0F\u20E3 -Spiele-Meisterschaft!'),
 
                  'give me your number': ('Загадывайте число, которое я должен буду отгадать !',
                                          'Render a number that I will have to guess!',
                                          'Geben Sie eine Zahl aus, die ich erraten muss!'),
 
                  'give 1-100': ('Теперь загадайте число для меня от 1\uFE0F\u20E3 до 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3 !',
-                     'Now guess a number for me from 1 to 100!',
-                     'Erraten Sie mir jetzt eine Zahl von 1 bis 100 !'),
+                     'Now guess a number for me from 1\uFE0F\u20E3 to 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3 !',
+                     'Erraten Sie mir jetzt eine Zahl von 1\uFE0F\u20E3 bis 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3 !'),
 
-                 'number your attempts': ('Количество ваших попыток 5,\n загадайте число для меня, пожалуйста !',
-                     'The number of your attempts is 5,\n Guess the number for me, please !',
-                     'Die Anzahl Ihrer Versuche beträgt 5\n Bitte erraten Sie mir die Zahl !'),
+                 'number your attempts': ('Количество ваших попыток 5\uFE0F\u20E3 ,\n загадайте число для меня, пожалуйста !',
+                     'The number of your attempts is 5\uFE0F\u20E3 ,\n Guess the number for me, please !',
+                     'Die Anzahl Ihrer Versuche beträgt 5\uFE0F\u20E3 \n Bitte erraten Sie mir die Zahl !'),
 
                  'last att': ('Количество оставшихся попыток - ',
                       'Number of remaining attempts - ',
@@ -91,25 +91,25 @@ language_dict = {'if not start': ('Для начала работы с бото�
                       'The Bot guessed right! Your number was ',
                       'Der Bot hat richtig geraten! Deine Nummer war '),
 
-                 'render new att': ('С какой попытки сейчас хотите угадать ? \nВведите цифру от 1 до 10',
-                      'What attempt do you want to guess now? \nEnter a number from 1 to 10',
-                      'Welchen Versuch willst du jetzt erraten? \nGeben Sie eine Zahl zwischen 1 und 10 ein'),
+                 'render new att': ('С какой попытки сейчас хотите угадать ? \nВведите цифру от 1\uFE0F\u20E3 до \U0001f51f',
+                      'What attempt do you want to guess now? \nEnter a number from 1\uFE0F\u20E3 to \U0001f51f',
+                      'Welchen Versuch willst du jetzt erraten? \nGeben Sie eine Zahl zwischen 1\uFE0F\u20E3  und \U0001f51f ein'),
 
                  'taily is guessed': ('Вы загадали Число !\nНачинаем игру ? \U0001f3b0',
                       "You guessed a Number !\nLet's start the Game? \U0001f3b0",
                       'Du hast eine Zahl erraten !\nLasst uns das Spiel beginnen? \U0001f3b0 '),
 
-                 '1-100': ('Загадайте для меня число от 1 до 100',
-                      'Render me a number from 1 to 100',
-                      'Gib mir eine Zahl von 1 bis 100'),
+                 '1-100': ('Загадайте для меня число от 1\uFE0F\u20E3 до 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3',
+                      'Render me a number from 1\uFE0F\u20E3 to 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3',
+                      'Gib mir eine Zahl von 1\uFE0F\u20E3 bis 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3'),
 
                  'new number': ('Какое число в этот раз для меня загадаете ?',
                       'What number will you wish for me this time?',
                       'Welche Nummer wünschst du mir dieses Mal?'),
 
-                 'Bot guessed': ('Ура!  \U0001f37e \n\nЯ загадал число от 1 до 100,  попробуй угадать с ',
-                      'Well !  \U0001f37e \n\nI guessed a number from 1 to 100, try to guess it in ',
-                      'Gut !  \U0001f37e \n\nIch habe eine Zahl von 1 bis 100 erraten, versuche sie in '),
+                 'Bot guessed': ('Ура!  \U0001f37e \n\nЯ загадал число от 1\uFE0F\u20E3 до 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3,  попробуй угадать с ',
+                      'Well !  \U0001f37e \n\nI guessed a number from 1\uFE0F\u20E3 to 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3, try to guess it in ',
+                      'Gut !  \U0001f37e \n\nIch habe eine Zahl von 1\uFE0F\u20E3 bis 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3 erraten, versuche sie in '),
 
                  'Bot guessed part2': (' попыток !',
                       ' times !',

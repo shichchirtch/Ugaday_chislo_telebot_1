@@ -4,7 +4,7 @@ from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
 from aiogram import Router
 from lexicon import *
-from UserFilter import RESTART
+from UserFilter import RESTART, CHEMPION
 from External_function import time_counter
 from config import users, user_belongnes
 from loggers import logger, std_out_logger, std_err_logger
@@ -27,8 +27,8 @@ async def process_start_command(message: Message):
     users[message.from_user.id]['game_list'] = []
     users[message.from_user.id]['bot_list'] = []
     time.sleep(1)
-    await message.answer(text='Если хотите установить количество попыток введите число от 1 до 10\n'
-                         'По умолчанию у вас 5 попыток',
+    await message.answer(text='Если хотите установить количество попыток введите число от 1\uFE0F\u20E3 до \U0001f51f\n'
+                         'По умолчанию у вас 5\uFE0F\u20E3  попыток',
                          reply_markup=keyboard_attempts)
     std_out_logger.info(f'\nБот запустил {message.chat.first_name}')# print('Only print, when new User start bot') log
     std_err_logger.info(f'\nСтруктура словаря юзера {users[message.from_user.id]["user_name"]} = {users[message.from_user.id]} ')
@@ -77,7 +77,7 @@ async def process_cancel_command(message: Message):
         await message.answer(language_dict['if not start'][users[message.from_user.id]['language']])
 
 
-@Comand_router.message(F.text.in_(['Переустановить количество попыток', '/att']))
+@Comand_router.message(F.text.in_(['Переустановить количество попыток', '/att']), ~CHEMPION())
 async def get_attempt_number(message: Message):
     if message.from_user.id in users.keys():
         if not users[message.from_user.id]['in_game']:
