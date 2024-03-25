@@ -112,7 +112,7 @@ async def set_user_number(message: Message):
                 message.text)  # Здесь происходить загадывание номерая юзером для бота
             std_out_logger.info(
                 f'Юзер {users[message.from_user.id]["user_name"]} загадал число {users[message.from_user.id]["user_number"]}')
-            print(f'Status user game = {users[message.from_user.id]["in_game"]}')
+            # print(f'Status user game = {users[message.from_user.id]["in_game"]}')
             if not users[message.from_user.id]["in_game"]:
                 await message.answer(text=language_dict['taily is guessed'][users[message.from_user.id]['language']],
                                      reply_markup=keyboard1)
@@ -131,6 +131,7 @@ async def process_positive_answer(message: Message):
             f'Юзер {users[message.from_user.id]["user_name"]} играет {users[message.from_user.id]["total_games"] + 1} игру')
         userID = message.from_user.id
         choosing_number(users, userID)
+        std_out_logger.info(f'BOTs NUMBER  =  {users[message.from_user.id]["secret_number"]} ')
         await message.answer(language_dict['new number'][users[message.from_user.id]['language']],
                              reply_markup=ReplyKeyboardRemove()
                              )
@@ -253,8 +254,6 @@ async def process_numbers_answer(message: Message):
                     users[message.from_user.id]['bot_list'].append(users[message.from_user.id]['bot_taily'])
 
             #########################################  USER PART  ###################################################
-
-            std_out_logger.info(f'\nchemp_result  =  {users[message.from_user.id]["chemp_result"]} ')
 
         if int(message.text) == users[message.from_user.id]['secret_number']:
             # CHEMPIONAT mini block

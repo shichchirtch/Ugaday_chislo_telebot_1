@@ -10,6 +10,7 @@ from config import users, user_belongnes
 from loggers import logger, std_out_logger, std_err_logger
 from aiogram.types import Message
 from KeyBoards import keyboard_attempts, keyboard1, keyboard_for_help
+from copy import deepcopy
 
 # Инициализируем роутер уровня модуля
 Comand_router = Router()
@@ -21,7 +22,7 @@ async def process_start_command(message: Message):
     start_time = time.monotonic()
     await message.answer(
         f'Привет, {message.chat.first_name} !  \U0001F60A\n {start_greeding}')
-    users[message.from_user.id] = user_belongnes.copy()
+    users[message.from_user.id] = deepcopy(user_belongnes)
     users[message.from_user.id]['user_name'] = user_name
     users[message.from_user.id]['start_time'] = start_time
     users[message.from_user.id]['game_list'] = []
