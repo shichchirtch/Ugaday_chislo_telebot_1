@@ -73,7 +73,8 @@ async def process_cancel_command(message: Message):
                 language_dict['exit from game'][users[message.from_user.id]['language']])
             await message.answer_sticker(sticker_dict['process_cancel_command'])
         else:
-            await message.answer(language_dict['user not in game now'][users[message.from_user.id]['language']])
+            await message.answer(text=language_dict['user not in game now'][users[message.from_user.id]['language']],
+                                 reply_markup=keyboard1)
     else:
         await message.answer(language_dict['if not start'][users[message.from_user.id]['language']])
 

@@ -3,7 +3,7 @@
 
 
 
-start_greeding = ('Давайте сыграем в игру "Угадай число"?\n\n'
+start_greeding = ('Давайте сыграем в игру "Угадай число" ?\n\n'
                   '\U0001f1f7\U0001f1fa По умолчанию используется русский язык.\n'
                   '\U0001F7E2 Чтобы переключить язык на английский введите eng,\n'
                   '\U0001F7E2 чтобы переключить на немецкий введите de\n'
@@ -16,36 +16,41 @@ language_dict = {'if not start': ('Для начала работы с бото�
                                   'To start interraction with the bot, enter /start',
                                   'Um mit dem Bot zu arbeiten, geben Sie /start ein'),
 
-                 'game rules': ('Правила игры:\n\nЯ загадываю число от 1\uFE0F\u20E3 до 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3, '
+                 'game rules': ('\U0001f4e2 Правила игры :\n\nЯ загадываю число от 1\uFE0F\u20E3 до 1\uFE0F\u20E30\uFE0F\u20E30\uFE0F\u20E3, '
                                 f'а вам нужно его угадать\nУ вас есть заданное Вами количество попыток '
                                 f'попыток\n\nДоступные команды:\n/help - правила '
                                 f'игры и список команд\n/cancel - выйти из игры\n'
-                                f'/chemp - чемпионат из 5\uFE0F\u20E3 игр с ботом\n\nСо скольки попыток Вы угадаете число ?'
-                                f'\n(Не больше \U0001f51f ! по умолчанию 5\uFE0F\u20E3)'
-                                f'\n/att - количество попыток с которых Вы хотите угадать число\n'
-                                f'/schet - Посмотреть счёт\n',
+                                f'/chemp - чемпионат из 5\uFE0F\u20E3 игр с ботом\n'
+                                f'/att - количество попыток с которых Вы хотите угадать число\n'
+                                f'/schet - Посмотреть счёт\n'
+                                f'Со скольки попыток Вы угадаете число ?'
+                                f'\n(Не больше \U0001f51f ! по умолчанию 5\uFE0F\u20E3)\n\n',
 
-                                'Rules of the game:\n\nI guess a number from 1 to 100,'
+
+                                '\U0001f4e2 Rules of the game :\n\nI guess a number from 1 to 100,'
                                 'You need to guess it\nYou have the number of attempts specified by you'
                                 'attempts\n\nAvailable commands:\n/help - rules '
                                 'games and list of commands\n/cancel - quit the game\n'
-                                '/chemp - A Campship from 5\uFE0F\u20E3 rounds with the BOT\n\nHow many attempts will it take you to guess the number?'
-                                '\n(No more than \U0001f51f ! default 5\uFE0F\u20E3)'
-                                '\n/att - the number of attempts from which you want to guess the number\n'
-                                '/schet - View account\n',
+                                '/chemp - A Campship from 5\uFE0F\u20E3 rounds with the BOT\n'
+                                '/att - the number of attempts from which you want to guess the number\n'
+                                '/schet - View account\n'
+                                'How many attempts will it take you to guess the number?'
+                                '\n(No more than \U0001f51f ! default 5\uFE0F\u20E3)\n\n',
 
-                                f'Spielregeln:\n\nIch schätze eine Zahl von 1 bis 100,'
+                                f'\U0001f4e2 Spielregeln :\n\nIch schätze eine Zahl von 1 bis 100,'
                                 f'Sie müssen es erraten\nSie haben die von Ihnen angegebene Anzahl an Versuchen.'
                                 f'attempts\n\nVerfügbare Befehle:\n/help - Rules '
                                 f'Spiele und Liste der Befehle\n/Abbrechen – Spiel beenden\n'
-                                f'/chemp - Meisterschaft von 5\uFE0F\u20E3 Spielen mit dem BOT\n\nWie viele Versuche werden Sie brauchen, um die Zahl zu erraten?'
-                                f'\n(Nicht mehr als \U0001f51f ! Standard 5\uFE0F\u20E3)'
+                                f'/chemp - Meisterschaft von 5\uFE0F\u20E3 Spielen mit dem BOT\n'
                                 f'\n/att – die Anzahl der Versuche, aus denen Sie die Zahl erraten möchten\n'
-                                '/schet – Konto anzeigen\n'),
+                                '/schet – Konto anzeigen\n'
+                                f'Wie viele Versuche werden Sie brauchen, um die Zahl zu erraten?'
+                                f'\n(Nicht mehr als \U0001f51f ! Standard 5\uFE0F\u20E3 )\n\n'
+                                ),
 
-                 'start ?': (' : BOT\n\nНачинаем игру ?',
-                             " : BOT\n\nLet's start the game?",
-                             ' : BOT\n\nLasst uns das Spiel beginnen?'),
+                 'start ?': ('  :  BOT    \U0001f3c1\n\nНачинаем игру ?    \U0001f920 ',
+                             "  :  BOT    \U0001f3c1\n\nLet's start the game?    \U0001f920 ",
+                             '  :  BOT    \U0001f3c1\n\nLasst uns das Spiel beginnen?     \U0001f920 '),
 
                  'exit from game': ('Вы вышли из игры. Если захотите сыграть снова - напишите об этом',
                                     'You are out of the game. If you want to play again, write about it',
@@ -138,7 +143,7 @@ language_dict = {'if not start': ('Для начала работы с бото�
 
                  'less': ('Мое число меньше \u2198\uFE0F', 'My number is less \u2198\uFE0F', 'Meine Zahl ist geringer \u2198\uFE0F'),
 
-                 'bot says number': ('Я назову число ', "I will tell you the Number ", 'Ich sage dir die Nummer '),
+                 'bot says number': ('\U0001f3b2  Я назову число ', "\U0001f3b2  I will tell you the Number ", '\U0001f3b2  Ich sage dir die Nummer '),
 
                  'dont repeat your number': ('Вы же знаете, что я не это число загадал)))',
                       'You know that this is not the number I wished for)))',

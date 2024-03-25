@@ -67,9 +67,8 @@ async def user_attempt(message: Message):  # Сюда попадает числ�
 
 @Game_router.message(BOT_WIN())
 async def bot_win(message: Message):
-    std_out_logger.info(f'\n ******************* BOT WINS {users[message.from_user.id]["user_name"]}, Game done !')
-    std_out_logger.info(
-        f'******* {users[message.from_user.id]["user_name"]}  имеет статус set_attempts = {users[message.from_user.id]["set_attempts"]}')
+    std_out_logger.info(f'\n ******** BOT WINS {users[message.from_user.id]["user_name"]}, Game done ! ********')
+
     await message.answer(
         language_dict['bot guessed'][users[message.from_user.id]['language']] + str(
             users[message.from_user.id]["bot_list"][-1]))
